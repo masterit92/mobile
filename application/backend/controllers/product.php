@@ -13,7 +13,7 @@ class Product extends My_controller{
     {
         $count_num_row=intval($this->model_product->count_all());
         $start=0;
-        $num_row=6;
+        $num_row=16;
         if($this->input->post('page'))
         {
             die('OKKKKKKKKKKKKKKKKKKKKKKKK');

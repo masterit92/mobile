@@ -22,5 +22,11 @@ class Model_category extends CI_Model{
         $query=$this->db->get($this->table_name);
         return $query->result_array();
     }
+    public function category_by_parent_id($parent_id)
+    {
+        $this->db->where('parent_id',$parent_id);
+        $query=$this->db->get($this->table_name);
+        return $query->result_array();
+    }
 
 }

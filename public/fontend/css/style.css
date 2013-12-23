@@ -146,15 +146,16 @@ div .subs_parent{
     padding: 10px;
 }
 div .left{
-    width: 20%;
+    width: 18%;
     min-height: 200px;
     float: left;
 }
 div .right{
-    width: 78%;
+    width: 82%;
     min-height: 200px;
     margin: 0 auto;
     float: right;
+    text-align: left;
 }
 div .left_title{
     width: 91%;
@@ -163,7 +164,7 @@ div .left_title{
     margin: 0 auto;
     color: #fff;
     text-align: center;
-    padding: 2px;
+    padding: 2px 10px 2px 10px;
     font-size: 16px;
     font-weight: bold;
     border-top-left-radius: 8px;
@@ -174,8 +175,8 @@ div .left_content{
     width: 90%;
     margin: 0 auto;
     border: 1px solid #806c6c;
-    padding: 2px;
-    background: #fff
+    padding: 2px 10px 2px 10px;
+    background: #fff;
 }
 div .menu_left{
     margin-top: 10px;
@@ -202,6 +203,7 @@ div .menu_left{
     border: 1px solid #ddd;
     text-decoration: none;
     color: #990000;
+    background: #fff;
 }
 .page a:hover{
     background-color: #990000;
@@ -254,9 +256,9 @@ div .detail b{
     margin-left: 10px;
 }
 div .sort_by{
-    margin: 0 auto;
+    margin-left: 80px;
     background: #1b1815;
-    width: 85%;
+    width: 900px;
     height: 25px;
     border-radius:5px;
     margin-top: 5px;
@@ -269,4 +271,15 @@ div .sort_by{
 }
 .sort_by p {
     float: right;
+}
+.contact p input{
+    height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff0033;
+    border-radius:5px;
+    padding: 3px;
+}
+.button{
+    margin-right:50px;
 }

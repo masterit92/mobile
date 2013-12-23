@@ -1,4 +1,5 @@
 <?php
+
 class Index extends My_controller{
 
     public function __construct()
@@ -9,11 +10,15 @@ class Index extends My_controller{
 
     public function index()
     {
-        $this->response['data']['product_selected']= $this->model_products->selected_product();
-        $this->response['data']['product_new']= $this->model_products->limit_product(4,0);
-        $this->response['title'] = "Home";
-        $this->response['template'] = 'default/index/index';
-        $this->load->view("default/layout", $this->response);
+        $this->model_products->set_infor(0,5);
+        $arr_where=array('selected' => 1);
+        $this->model_products->arr_where=$arr_where;
+        $this->response['data']['product_selected']=$this->model_products->limit_product();
+        $this->model_products->arr_where=NULL;
+        $this->response['data']['product_new']=$this->model_products->limit_product();
+        $this->response['title']="Home";
+        $this->response['template']='default/index/index';
+        $this->load->view("default/layout",$this->response);
     }
 
 }
