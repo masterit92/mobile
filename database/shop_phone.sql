@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2013 at 06:36 PM
+-- Generation Time: Dec 23, 2013 at 06:14 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   KEY `c_id` (`c_id`),
   KEY `status` (`status`),
   KEY `parent_id` (`parent_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `category`
@@ -70,8 +70,43 @@ CREATE TABLE IF NOT EXISTS `cat_and_pro` (
 --
 
 INSERT INTO `cat_and_pro` (`p_id`, `c_id`) VALUES
+(2, 1),
 (2, 2),
 (2, 12),
+(3, 1),
+(3, 2),
+(3, 12),
+(4, 1),
+(4, 2),
+(4, 8),
+(5, 1),
+(5, 4),
+(5, 9),
+(6, 1),
+(6, 2),
+(6, 8),
+(7, 1),
+(7, 8),
+(7, 9),
+(8, 1),
+(8, 2),
+(8, 12),
+(9, 1),
+(9, 2),
+(9, 10),
+(9, 12),
+(10, 1),
+(10, 2),
+(10, 4),
+(10, 12),
+(11, 1),
+(11, 8),
+(11, 12),
+(12, 1),
+(12, 8),
+(15, 1),
+(15, 2),
+(15, 12),
 (30, 4),
 (30, 9),
 (30, 10);
@@ -105,11 +140,11 @@ CREATE TABLE IF NOT EXISTS `products` (
 
 INSERT INTO `products` (`p_id`, `name`, `price`, `description`, `quantity`, `status`, `thumb`, `selected`) VALUES
 (2, 'Pro2222', '12', '12', 12, 1, 'public/backend/images/88888888888.jpg', 1),
-(3, 'pro3', '231', '21', 121, 1, 'public/backend/images/quanao.jpg', 1),
+(3, 'pro3', '231', '21', 121, 1, 'public/backend/images/ssss.jpg', 1),
 (4, 'Pro 3', '12', 'ffdfd', 121, 1, 'public/backend/images/ssss.jpg', 0),
-(5, 'pro4', '21', '221', 121, 1, 'public/backend/images/33333333333.jpg', 0),
-(6, 'Pro 6', '54', '545', 54, 1, 'public/backend/images/1111.jpg', 0),
-(7, 'sdd', '0', '', 1, 1, 'public/backend/images/4444444444.jpg', 0),
+(5, 'pro4', '21', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 121, 1, 'public/backend/images/aa.jpg', 0),
+(6, 'Pro 6', '54', '545', 54, 1, 'public/backend/images/aa.jpg', 1),
+(7, 'sdd', '0', '12qwqdq', 1, 1, 'public/backend/images/aa.jpg', 1),
 (8, 'Nokia lumia', '123', 'Lumia 520 sẽ nằm trong phân khúc smartphone tầm trung bình thấp với màn hình 4 inch dùng công nghệ Super Sensitive Touch (cho phép người dùng thao tác bằng cả găng tay dày), chip lõi kép tốc độ 1 GHz, RAM 512 MB và dung lượng lưu trữ trong 8 GB. Lumia 520 hỗ trợ khe cắm thẻ nhớ ngoài, camera sau 5 megapixel và không có camera trước. Trong khi đó, Lumia 720 sở hữu cấu hình gần như tương đồng với Lumia 520 nhưng dùng camera sau 6 megapixel, màn hình 4,3 inch và được tích hợp camera 2 megapixel phía trước.', 123, 1, 'public/backend/images/HT_nokia_lumia1020_jef_130711_16x9_992.jpg', 0),
 (9, 'pro 8', '23', 'dcsfvds', 12, 1, 'public/backend/images/5852_HT_nokia_lumia1020_jef_130711_16x9_992.jpg', 0),
 (10, 'Pro 234', '434', 'hgnf', 12, 1, 'public/backend/images/4444_HT_nokia_lumia1020_jef_130711_16x9_992.jpg', 0),
