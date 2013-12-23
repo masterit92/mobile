@@ -17,6 +17,16 @@
     </div>
 </div>
 <div class="right">
+    <div class="sort_by">
+        &nbsp;&nbsp; Product
+        <p>
+            Sort by: 
+            <a href="#">Name&DoubleUpArrow;</a> - 
+            <a href="#">Name&DoubleDownArrow;</a> - 
+            <a href="#">Price&DoubleUpArrow;</a> - 
+            <a href="#">Price&DoubleDownArrow;</a> 
+        </p>
+    </div>
     <section class="services">
         <div class="shell">
             <div class="boxes">
