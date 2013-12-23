@@ -85,7 +85,7 @@
         $('.event_page').click(function() {
             page = $(this).attr('id');
             $("#content_center").load("<?php echo base_url('admin/product/index');?>", {page: page});
-
+            alert(page);
         });
     });
 </script>

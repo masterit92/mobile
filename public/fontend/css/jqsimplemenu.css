@@ -29,9 +29,8 @@
 }
 div.box
 {
-    position: absolute;
+/*    position: absolute;*/
     z-index: -1;
-    background-color: #75CDD2;
     left: 0;
     top: 0;
     border-radius: 4px 4px 0px 0px;

@@ -12,16 +12,36 @@
 <!-- navigation -->
 <nav id="navigation" >
     <div class="shell">
-        <ul class="menu">
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">PRODUCTS</a>
-                <ul>
-                    <li><a href="#">PRODUCTS</a>
-                    <li><a href="#">PRODUCTS</a>
-                    <li><a href="#">PRODUCTS</a>
-                </ul>
+        <ul>
+            <li <?php echo $title === 'Home' ? 'class="active"' : '' ?> >
+                <a href="<?php echo base_url('index') ?>" ><span></span>HOME</a>
             </li>
-            <li><a href="#">ABOUT</a></li>
+            <li <?php echo $title === 'Product' ? 'class="active"' : '' ?>>
+                <a href="<?php echo base_url('product') ?>"><span></span>PRODUCTS</a>
+                <div class="subs">
+                    <?php
+                    $arr_cat = $data['all_category'];
+
+                    function show_div_category($arr_cat, $parent_id = 0, $text = '&triangleright;')
+                    {
+
+                        foreach($arr_cat as $cat)
+                        {
+                            if($parent_id == 0)
+                                echo "<div class='subs_parent'>";
+                            if($cat['parent_id'] == $parent_id):
+                                echo '<a href="'.  base_url('product/product_category?c_id='.$cat['c_id']).'">'.$text . $cat['name'] . '</a><br/>';
+                                show_div_category($arr_cat, $cat['c_id'], $text . '&triangleright;&triangleright;');
+                            endif;
+                            if($parent_id == 0)
+                                echo "</div>";
+                        }
+                    }
+
+                    show_div_category($arr_cat);
+                    ?>
+                </div>
+            </li>
         </ul>
     </div>	
 </nav>

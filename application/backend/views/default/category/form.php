@@ -19,6 +19,7 @@ if(isset($data['category']))
                 </li>
                 <li><label for="parent name"  class="required">Parent Category<span>*</span></label>
                     <select name="parent_id">
+                        <option value="0">Root</option>
                         <?php
                         $arr_cat=$data['list_category'];
 

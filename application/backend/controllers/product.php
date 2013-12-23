@@ -17,8 +17,8 @@ class Product extends My_controller{
         if($this->input->post('page'))
         {
             die('OKKKKKKKKKKKKKKKKKKKKKKKK');
-            $page=intval($this->input->post('page'));
-            $start=$num_row*$page;
+//            $page=intval($this->input->post('page'));
+//            $start=$num_row*$page;
         }
         $this->response['data']['list_product']=$this->model_product->limit_product($num_row,$start);
         $this->response['data']['num_page']=ceil($count_num_row / $num_row);
@@ -159,7 +159,7 @@ class Product extends My_controller{
             $config['encrypt_name']=FALSE;
             $this->load->library('upload',$config);
             $this->upload->initialize($config);
-            $_FILES[$filed_name]['name']=rand(100,100000) . $_FILES[$filed_name]['name'];
+            $_FILES[$filed_name]['name']=$_FILES[$filed_name]['name'];
             $url_img='public/backend/images/' . $_FILES[$filed_name]['name'];
             $check_upload=$this->upload->do_upload($filed_name);
             if($check_upload)

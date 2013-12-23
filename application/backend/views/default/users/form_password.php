@@ -6,7 +6,7 @@
             <legend><span>User Information</span></legend>
             <ol>
                 <li>
-                    <label for="password"  class="required">Password<span>*</span></label>
+                    <label for="password"  class="required">New Password<span>*</span></label>
                     <input type="password" id="password" name="password" placeholder="Password" class="required"/>
                 </li>
                 <li>

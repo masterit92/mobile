@@ -4,19 +4,15 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <?php
         $arr_file_css=array('style.css','flexslider.css','jqsimplemenu.css');
-        $arr_file_js=array('jqsimplemenu.js');
+        $arr_file_js=array();
         echo $this->render->Render_js($arr_file_js,'fontend');
         echo $this->render->Render_css($arr_file_css,'fontend');
         ?>
         <script src="<?php echo base_url('public/fontend/js/jquery-1.7.2.min.js')?>" type="text/javascript"></script>
         <script src="<?php echo base_url('public/fontend/js/jquery.flexslider-min.js')?>" type="text/javascript"></script>
         <script src="<?php echo base_url('public/fontend/js/functions.js');?>" type="text/javascript"></script>
-        <script src="<?php echo base_url('public/fontend/js/jqsimplemenu.js');?>" type="text/javascript"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('.menu').jqsimplemenu();
-            });
-        </script>
+        
+        <script src="<?php echo base_url('public/fontend/js/my_js.js');?>" type="text/javascript"></script>
         <title><?php echo $title?></title> 
     </head> 
 
@@ -32,6 +28,7 @@
                 ?> 
             </div>
         </div>
+        <div class="cl">&nbsp;</div>
         <!-- end of wrapper -->
         <div id="footer">
             <?php $this->load->view('default/footer');?> 

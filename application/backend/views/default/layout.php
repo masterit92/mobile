@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <?php
         $arr_file_css=array('menu_left.css','menu_top.css','style_admin.css','treeview.css','table.css','form.css');
-        $arr_file_js= array('jquery-1.10.2.js','jquery.validate.min.js','my_js.js');
+        $arr_file_js= array('jquery-1.9.0.js','jquery.validate.min.js','my_js.js');
         echo $this->render->render_js($arr_file_js,'backend');
         echo $this->render->render_css($arr_file_css,'backend');
         if($this->session->flashdata('error'))
