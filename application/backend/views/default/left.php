@@ -10,7 +10,12 @@
                         <li><a href="<?php echo base_url('admin/role')?>"><span>Role</span></a></li>
                     </ul>
                 </li>
-                <li><a href="<?php echo base_url('admin/product')?>"><span>Product</span></a></li>
+                <li class='has-sub '><a href="<?php echo base_url('admin/product')?>"><span>Product</span></a>
+                    <ul>
+                        <li><a href="<?php echo base_url('admin/product')?>"><span>Product</span></a></li>
+                        <li><a href="<?php echo base_url('admin/maker')?>"><span>Maker</span></a></li>
+                    </ul>
+                </li>
                 <li><a href="<?php echo base_url('admin/category')?>"><span>Category</span></a></li>
             </ul>
         </div>

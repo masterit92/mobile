@@ -216,12 +216,13 @@ div .menu_left{
 div .detail{
     margin: 0 auto;
     background: #fff;
-    min-height: 200px;
+    min-height: 300px;
     width: 85%;
     border-radius:15px;
     padding: 10px;
     height: auto;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 div .detail_top{
     height: 50px;
@@ -259,7 +260,7 @@ div .sort_by{
     margin-left: 80px;
     background: #1b1815;
     width: 900px;
-    height: 25px;
+    min-height: 25px;
     border-radius:5px;
     margin-top: 5px;
     margin-bottom: 5px;

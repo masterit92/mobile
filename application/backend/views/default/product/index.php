@@ -30,7 +30,7 @@
        
         foreach($data['list_product'] as $product)
         {
-            $maker= $this->model_maker->maker_by_id($product['makers_id']);
+            $maker= $this->model_maker->maker_by_id($product['m_id']);
             ?>
             <tr>
                 <td><?php echo $product['p_id'] ?></td>

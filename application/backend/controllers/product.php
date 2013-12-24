@@ -94,11 +94,13 @@ class Product extends My_controller{
             $quantity = $this->input->post('quantity');
             $thumb = $this->upload_img('thumb');
             $arr_c_id = $this->input->post('cat_id');
+            $m_id=$this->input->post('m_id');
             $arr_data = array(
                 'name' => $name,
                 'price' => $price,
                 'description' => $description,
                 'quantity' => $quantity,
+                'm_id'=>$m_id
             );
             if($this->input->post('selected'))
             {

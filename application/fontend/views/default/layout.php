@@ -24,7 +24,7 @@
                 <?php $this->load->view('default/header'); ?> 
             </div>
             <div class="wrapper_center">
-                <?php if($this->uri->segment(1)=='product'):?>
+                <?php if($this->uri->segment(1)=='product' && $this->uri->segment(2)!=='detail'):?>
                 <?php $this->load->view('default/left'); ?> 
                 <?php endif; ?>
                 <div id="container">

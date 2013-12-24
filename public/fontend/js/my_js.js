@@ -14,5 +14,9 @@ function get_arr_check(arr_m_id) {
             k++;
         }
     }
-    return  arr_check;
+    if (arr_check.length) {
+        return  arr_check;
+    } else {
+        return 'NULL';
+    }
 }
