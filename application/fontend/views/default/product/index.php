@@ -27,7 +27,7 @@
 				}
 				if (strcmp($key, 'sort_price') == 0)
 				{
-					echo '- <b>Sort Price</b>: ' . $value . '--<a href="#" url="'.base_url('product/delete_filter').'" class="event_del_filter" filter="search">Delete</a><br/>';
+					echo '- <b>Sort Price</b>: ' . $value . '--<a href="#" url="'.base_url('product/delete_filter').'" class="event_del_filter" filter="sort_price">Delete</a><br/>';
 				}
 				if (strcmp($key, 'c_id') == 0)
 				{
@@ -50,10 +50,10 @@
 		?>
 		<p>
 			Sort by:
-			<a href="#" url="<?php echo base_url('product/sort')?>" class="event_sort_name" sort="DESC">Name&DoubleUpArrow;</a> -
-			<a href="#" url="<?php echo base_url('product/sort')?>" class="event_sort_name" sort="ASC">Name&DoubleDownArrow;</a> -
-			<a href="#" url="<?php echo base_url('product/sort')?>" class="event_sort_price" sort="DESC">Price&DoubleUpArrow;</a> -
-			<a href="#" url="<?php echo base_url('product/sort')?>" class="event_sort_price" sort="ASC">Price&DoubleDownArrow;</a>
+			<a href="#" url="<?php echo base_url('product/sort')?>" class="event_sort_name" sort="DESC">Name&DoubleDownArrow;</a> -
+			<a href="#" url="<?php echo base_url('product/sort')?>" class="event_sort_name" sort="ASC">Name&DoubleUpArrow;</a> -
+			<a href="#" url="<?php echo base_url('product/sort')?>" class="event_sort_price" sort="DESC">Price&DoubleDownArrow;</a> -
+			<a href="#" url="<?php echo base_url('product/sort')?>" class="event_sort_price" sort="ASC">Price&DoubleUpArrow;</a>
 		</p>
 	</div>
 	<?php if (count($data['list_product']) > 0): ?>
