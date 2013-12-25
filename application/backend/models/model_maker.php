@@ -18,7 +18,6 @@ class Model_maker extends CI_Model {
 	public function maker_by_id($m_id)
 	{
 		$this->db->where('m_id', $m_id);
-		$this->db->where('m_id <> ', maker_default);
 		$query = $this->db->get($this->table_name);
 		return $query->result_array();
 	}

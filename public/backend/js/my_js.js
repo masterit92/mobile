@@ -9,4 +9,11 @@ $(function (){
     });
     // validate
     $('#input_form').validate();
+    $('.event_page').click(function () {
+        var page = $(this).attr('id');
+        page = parseInt(page) + 1;
+        var url= url_root + 'admin/product/index';
+        $('.container-right').load(url, {'page': page});
+
+    });
 });

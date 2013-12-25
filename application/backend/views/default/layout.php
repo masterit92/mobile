@@ -3,6 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<script type="text/javascript">
+		var url_root= '<?php echo base_url()?>';
+	</script>
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<?php
 	$arr_file_css = array('menu_left.css', 'menu_top.css', 'style_admin.css', 'treeview.css', 'table.css', 'form.css');

@@ -1,13 +1,4 @@
-<script>
-	$(function () {
-		$('.event_page').click(function () {
-			var page = $(this).attr('id');
-			page = parseInt(page) + 1;
-			$('.container-right').load('<?php echo base_url('admin/product/index')   ?>', {'page': page});
-
-		});
-	});
-</script>
+<script src="http://mobile.loc/public/backend/js/my_js.js" type="text/javascript"></script>
 <table class="zebra">
 	<caption>Product</caption>
 	<tr>
