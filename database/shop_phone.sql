@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2013 at 04:43 AM
+-- Generation Time: Dec 25, 2013 at 08:16 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -34,7 +34,6 @@ CREATE TABLE IF NOT EXISTS `category` (
   `parent_id` int(11) NOT NULL,
   `status` smallint(6) NOT NULL DEFAULT '1',
   PRIMARY KEY (`c_id`),
-  KEY `c_id` (`c_id`),
   KEY `status` (`status`),
   KEY `parent_id` (`parent_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
@@ -62,9 +61,7 @@ INSERT INTO `category` (`c_id`, `name`, `parent_id`, `status`) VALUES
 CREATE TABLE IF NOT EXISTS `cat_and_pro` (
   `p_id` int(11) NOT NULL AUTO_INCREMENT,
   `c_id` int(11) NOT NULL,
-  PRIMARY KEY (`p_id`,`c_id`),
-  KEY `p_id` (`p_id`),
-  KEY `c_id` (`c_id`)
+  PRIMARY KEY (`p_id`,`c_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=31 ;
 
 --
@@ -130,10 +127,10 @@ CREATE TABLE IF NOT EXISTS `makers` (
 --
 
 INSERT INTO `makers` (`m_id`, `name`) VALUES
+(0, 'other'),
 (1, 'Nokia'),
 (2, 'Apple'),
-(3, 'Samsung'),
-(5, 'other');
+(3, 'Samsung');
 
 -- --------------------------------------------------------
 
@@ -152,7 +149,6 @@ CREATE TABLE IF NOT EXISTS `products` (
   `selected` smallint(6) DEFAULT '0',
   `m_id` int(11) DEFAULT '0',
   PRIMARY KEY (`p_id`),
-  KEY `p_id` (`p_id`),
   KEY `name` (`name`),
   KEY `price` (`price`),
   KEY `status` (`status`),
@@ -164,8 +160,8 @@ CREATE TABLE IF NOT EXISTS `products` (
 --
 
 INSERT INTO `products` (`p_id`, `name`, `price`, `description`, `quantity`, `status`, `thumb`, `selected`, `m_id`) VALUES
-(2, 'Pro2222', '12', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 12, 1, 'public/backend/images/aa.jpg', 1, 5),
-(3, 'pro3', '231', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 121, 1, 'public/backend/images/aa.jpg', 1, 5),
+(2, 'Pro2222', '12', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 12, 1, 'public/backend/images/aa.jpg', 1, 0),
+(3, 'pro3', '231', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 121, 1, 'public/backend/images/aa.jpg', 1, 0),
 (4, 'Pro 0003', '12', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 121, 1, 'public/backend/images/aa.jpg', 0, 3),
 (5, 'pro4', '21', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 121, 1, 'public/backend/images/aa.jpg', 1, 3),
 (6, 'Pro 6', '54', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 54, 1, 'public/backend/images/aa.jpg', 1, 2),
@@ -205,10 +201,7 @@ CREATE TABLE IF NOT EXISTS `role` (
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `status` smallint(5) unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`role_id`),
-  KEY `role_id` (`role_id`),
-  KEY `status` (`status`),
-  KEY `status_2` (`status`),
-  KEY `role_id_2` (`role_id`)
+  KEY `status` (`status`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
@@ -258,7 +251,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `full_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `status` smallint(6) NOT NULL DEFAULT '1',
   PRIMARY KEY (`user_id`),
-  KEY `user_id` (`user_id`),
   KEY `email` (`email`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
 
