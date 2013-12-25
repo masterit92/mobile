@@ -1,6 +1,6 @@
 $(function() {
     $('.event_back').click(function() {
-        history.go(-1);
+        history.go(-10);
     });
     $('.event_sort_name').click(function () {
         var sort_name = $(this).attr('sort');

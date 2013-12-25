@@ -76,7 +76,7 @@
 					<?php
 					}
 					$num_page = intval($data['num_page']);
-					$url = '#';
+					$url = '#?page';
 					$class_name = 'event_page';
 					?>
 					<div class="cl">&nbsp;</div>

@@ -15,6 +15,14 @@ $product = $data['product'][0];
 
 		<p>DESCRIPTION:</p><b><?php echo $product['description'] ?></b>
 
+		<p>MAKER:</p>
+		<b>
+			<?php
+			$maker = $this->model_maker->maker_by_id($product['m_id']);
+			echo $maker[0]['name'];
+			?>
+		</b>
+
 		<p>
 			<?php echo $product['quantity'] > 0 ? 'IN STOCK!' : 'OUT STOCK!' ?>
 		</p>
