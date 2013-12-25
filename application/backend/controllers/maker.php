@@ -21,12 +21,12 @@ class Maker extends My_controller {
 	public function delete()
 	{
 		$m_id = intval($this->input->get('m_id'));
-		if ($m_id !== 5)
+		if ($m_id !== 0)
 		{
 			$arr_pro = $this->model_maker->product_maker($m_id);
 			foreach ($arr_pro as $pro)
 			{
-				$arr_data = array('m_id' => 5);
+				$arr_data = array('m_id' => 0);
 				$this->model_product->update($arr_data, $pro['p_id']);
 			}
 			$this->model_maker->delete($m_id);
