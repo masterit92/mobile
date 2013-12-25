@@ -43,7 +43,7 @@ $arr_m_id = rtrim($arr_m_id, ',');
 				<input type="checkbox" <?php echo (isset($checked)) ? $checked : '' ?> class="event_makers"
 					   id="<?php echo 'makerid_' . $makers['m_id'] ?>" name="cb_maker[]"
 					   id="<?php echo $makers['m_id'] ?>"
-					   url="<?php echo base_url('product/makers') ?>"/> <?php echo $makers['name'] ?>
+					   /> <?php echo $makers['name'] ?>
 				<br/>
 			<?php
 			endforeach;
@@ -59,7 +59,7 @@ $arr_m_id = rtrim($arr_m_id, ',');
 				<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
 			</p>
 
-			<div id="slider-range" url="<?php echo base_url('product/price_rang') ?>"></div>
+			<div id="slider-range" ></div>
 		</div>
 	</div>
 </div>

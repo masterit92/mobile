@@ -11,28 +11,28 @@
 			foreach ($fillter as $key => $value):
 				if (strcmp($key, 'search') == 0)
 				{
-					echo '- <b>Search name</b>: ' . $value . '--<a href="#" url="'.base_url('product/delete_filter').'" class="event_del_filter" filter="search">Delete</a><br/>';
+					echo '- <b>Search name</b>: ' . $value . '--<a href="#"  class="event_del_filter" filter="search">Delete</a><br/>';
 				}
 				if (strcmp($key, 'price_min') == 0)
 				{
-					echo '- <b>Min Price</b>: ' . $value . '--<a href="#" url="'.base_url('product/delete_filter').'" class="event_del_filter" filter="price_min">Delete</a><br/>';
+					echo '- <b>Min Price</b>: ' . $value . '--<a href="#" class="event_del_filter" filter="price_min">Delete</a><br/>';
 				}
 				if (strcmp($key, 'price_max') == 0)
 				{
-					echo '- <b>Max Price</b>: ' . $value . '--<a href="#" url="'.base_url('product/delete_filter').'" class="event_del_filter" filter="price_max">Delete</a><br/>';
+					echo '- <b>Max Price</b>: ' . $value . '--<a href="#" class="event_del_filter" filter="price_max">Delete</a><br/>';
 				}
 				if (strcmp($key, 'sort_name') == 0)
 				{
-					echo '- <b>Sort Name</b>: ' . $value . '--<a href="#" url="'.base_url('product/delete_filter').'" class="event_del_filter" filter="sort_name">Delete</a><br/>';
+					echo '- <b>Sort Name</b>: ' . $value . '--<a href="#" class="event_del_filter" filter="sort_name">Delete</a><br/>';
 				}
 				if (strcmp($key, 'sort_price') == 0)
 				{
-					echo '- <b>Sort Price</b>: ' . $value . '--<a href="#" url="'.base_url('product/delete_filter').'" class="event_del_filter" filter="sort_price">Delete</a><br/>';
+					echo '- <b>Sort Price</b>: ' . $value . '--<a href="#" class="event_del_filter" filter="sort_price">Delete</a><br/>';
 				}
 				if (strcmp($key, 'c_id') == 0)
 				{
 					$category = $this->model_category->category_by_id($value);
-					echo '- <b>Category</b>: ' . $category[0]['name'] . '--<a href="#" url="'.base_url('product/delete_filter').'" class="event_del_filter" filter="c_id">Delete</a><br/>';
+					echo '- <b>Category</b>: ' . $category[0]['name'] . '--<a href="#" class="event_del_filter" filter="c_id">Delete</a><br/>';
 				}
 				if (strcmp($key, 'arr_m_id') == 0 && $value !== 'NULL')
 				{
@@ -42,7 +42,7 @@
 					{
 						echo $maker['name'] . '. ';
 					}
-					echo '--<a href="#" url="'.base_url('product/delete_filter').'" class="event_del_filter" filter="arr_m_id">Delete</a><br/>';
+					echo '--<a href="#" class="event_del_filter" filter="arr_m_id">Delete</a><br/>';
 				}
 			endforeach;
 			echo "<a href='" . base_url('product') . "'>Clear Filter</a>";
@@ -50,10 +50,10 @@
 		?>
 		<p>
 			Sort by:
-			<a href="#" url="<?php echo base_url('product/sort')?>" class="event_sort_name" sort="DESC">Name&DoubleDownArrow;</a> -
-			<a href="#" url="<?php echo base_url('product/sort')?>" class="event_sort_name" sort="ASC">Name&DoubleUpArrow;</a> -
-			<a href="#" url="<?php echo base_url('product/sort')?>" class="event_sort_price" sort="DESC">Price&DoubleDownArrow;</a> -
-			<a href="#" url="<?php echo base_url('product/sort')?>" class="event_sort_price" sort="ASC">Price&DoubleUpArrow;</a>
+			<a href="#"  class="event_sort_name" sort="DESC">Name&DoubleDownArrow;</a> -
+			<a href="#"  class="event_sort_name" sort="ASC">Name&DoubleUpArrow;</a> -
+			<a href="#"  class="event_sort_price" sort="DESC">Price&DoubleDownArrow;</a> -
+			<a href="#"  class="event_sort_price" sort="ASC">Price&DoubleUpArrow;</a>
 		</p>
 	</div>
 	<?php if (count($data['list_product']) > 0): ?>
@@ -81,7 +81,7 @@
 					?>
 					<div class="cl">&nbsp;</div>
 					<div class="page">
-						<a href="#" url="<?php echo base_url('product/filter')?>" class="<?php echo $class_name ?>" id="0">Start</a>
+						<a href="#"  class="<?php echo $class_name ?>" id="0">Start</a>
 						<?php
 						$current = 1;
 						if (isset($data['page']))
@@ -96,10 +96,10 @@
 								$flag = TRUE;
 								if ($current === $i)
 								{
-									echo ' <a href="' . $url . '" class="' . $class_name . ' current" id="' . ($i - 1) . '" url="'.base_url('product/filter').'">' . $i . '</a>';
+									echo ' <a href="' . $url . '" class="' . $class_name . ' current" id="' . ($i - 1) . '" >' . $i . '</a>';
 								} else
 								{
-									echo ' <a href="' . $url . '" class="' . $class_name . '" id="' . ($i - 1) . '" url="'.base_url('product/filter').'">' . $i . '</a>';
+									echo ' <a href="' . $url . '" class="' . $class_name . '" id="' . ($i - 1) . '" >' . $i . '</a>';
 								}
 							} else
 							{
@@ -111,7 +111,7 @@
 							}
 						}
 						?>
-						<a href="#" url="<?php echo base_url('product/filter')?>" class="<?php echo $class_name ?>" id="<?php echo $num_page - 1 ?>">End</a>
+						<a href="#" class="<?php echo $class_name ?>" id="<?php echo $num_page - 1 ?>">End</a>
 					</div>
 				</div>
 			</div>

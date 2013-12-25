@@ -31,14 +31,14 @@ class Model_maker extends CI_Model {
 	public function update($arr_data, $m_id)
 	{
 		$this->db->where('m_id', $m_id);
-		$this->db->where('m_id <> ', 5);
+		$this->db->where('m_id <> ', 0);
 		$this->db->update($this->table_name, $arr_data);
 	}
 
 	public function delete($m_id)
 	{
 		$this->db->where('m_id', $m_id);
-		$this->db->where('m_id <> ', 5);
+		$this->db->where('m_id <> ', 0);
 		$this->db->delete($this->table_name);
 	}
 
