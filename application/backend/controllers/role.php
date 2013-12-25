@@ -71,7 +71,7 @@ class Role extends My_controller {
 		if ($this->input->post('save'))
 		{
 			$role_name = $this->input->post('role_name');
-			if ($this->model_role->check_role)
+			if ($this->model_role->check_role($role_name))
 			{
 				$arr_date = array('name' => $role_name);
 				if ($this->input->post('role_id'))
