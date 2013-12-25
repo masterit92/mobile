@@ -30,7 +30,7 @@ $arr_m_id = rtrim($arr_m_id, ',');
 </script>
 <div class="left">
 	<div class="menu_left">
-		<div class="left_title">Makers</div>
+		<div class="left_title">Brands</div>
 		<div class="left_content">
 			<?php
 			foreach ($data['makers'] as $makers):
