@@ -75,8 +75,21 @@ if (isset($data['product_category']))
 					</select>
 				</li>
 				<li><label for="Checked show Banner">Checked show banner<span>*</span></label>
-					<input type="checkbox"
-						   name="selected" <?php echo (isset($product) && $product['selected'] == 1) ? 'checked' : '' ?> />
+					<select name="selected">
+						<option value="0">No show</option>
+						<?php
+						for ($i = 1; $i <= slide_show; $i++)
+						{
+							if (isset($product) && $product['selected'] == $i)
+							{
+								echo "<option value='$i' selected >Silde Show $i</option>";
+							} else
+							{
+								echo "<option value='$i'>Silde Show $i</option>";
+							}
+						}
+						?>
+					</select>
 				</li>
 				<li><label for="Checked show Banner">Maker<span>*</span></label>
 					<select name="m_id">
@@ -86,8 +99,7 @@ if (isset($data['product_category']))
 							if (isset($product) && $product['m_id'] == $maker['m_id'])
 							{
 								echo '<option  value="' . $maker['m_id'] . '" selected>' . $maker['name'] . '</option>';
-							}
-							else
+							} else
 							{
 								echo '<option  value="' . $maker['m_id'] . '">' . $maker['name'] . '</option>';
 							}

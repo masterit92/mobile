@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2013 at 08:16 AM
--- Server version: 5.6.11
--- PHP Version: 5.5.3
+-- Generation Time: Dec 25, 2013 at 06:41 PM
+-- Server version: 5.5.32
+-- PHP Version: 5.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `shop_phone`
 --
+CREATE DATABASE IF NOT EXISTS `shop_phone` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `shop_phone`;
 
 -- --------------------------------------------------------
 
@@ -90,7 +92,6 @@ INSERT INTO `cat_and_pro` (`p_id`, `c_id`) VALUES
 (8, 12),
 (9, 1),
 (9, 2),
-(9, 10),
 (9, 12),
 (10, 1),
 (10, 2),
@@ -104,9 +105,10 @@ INSERT INTO `cat_and_pro` (`p_id`, `c_id`) VALUES
 (15, 1),
 (15, 2),
 (15, 12),
+(29, 4),
+(29, 10),
 (30, 4),
-(30, 9),
-(30, 10);
+(30, 9);
 
 -- --------------------------------------------------------
 
@@ -139,12 +141,12 @@ INSERT INTO `makers` (`m_id`, `name`) VALUES
 CREATE TABLE IF NOT EXISTS `products` (
   `p_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `price` decimal(10,0) NOT NULL,
+  `price` decimal(11,2) NOT NULL,
   `description` longtext COLLATE utf8_unicode_ci,
   `quantity` int(11) NOT NULL DEFAULT '1',
   `status` smallint(6) NOT NULL DEFAULT '1',
   `thumb` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `selected` smallint(6) DEFAULT '0',
+  `selected` int(11) DEFAULT '0',
   `m_id` int(11) DEFAULT '0',
   PRIMARY KEY (`p_id`),
   KEY `name` (`name`),
@@ -158,35 +160,35 @@ CREATE TABLE IF NOT EXISTS `products` (
 --
 
 INSERT INTO `products` (`p_id`, `name`, `price`, `description`, `quantity`, `status`, `thumb`, `selected`, `m_id`) VALUES
-(2, 'Pro2222', '12', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 12, 1, 'public/backend/images/aa.jpg', 1, 0),
-(3, 'pro3', '231', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 121, 1, 'public/backend/images/aa.jpg', 1, 0),
-(4, 'Pro 0003', '12', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 121, 1, 'public/backend/images/aa.jpg', 0, 3),
-(5, 'pro4', '21', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 121, 1, 'public/backend/images/aa.jpg', 1, 3),
-(6, 'Pro 6', '54', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 54, 1, 'public/backend/images/aa.jpg', 1, 2),
-(7, 'sdd', '0', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 1, 1, 'public/backend/images/aa.jpg', 1, 1),
-(8, 'Nokia lumia', '123', 'Lumia 520 sẽ nằm trong phân khúc smartphone tầm trung bình thấp với màn hình 4 inch dùng công nghệ Super Sensitive Touch (cho phép người dùng thao tác bằng cả găng tay dày), chip lõi kép tốc độ 1 GHz, RAM 512 MB và dung lượng lưu trữ trong 8 GB. Lumia 520 hỗ trợ khe cắm thẻ nhớ ngoài, camera sau 5 megapixel và không có camera trước. Trong khi đó, Lumia 720 sở hữu cấu hình gần như tương đồng với Lumia 520 nhưng dùng camera sau 6 megapixel, màn hình 4,3 inch và được tích hợp camera 2 megapixel phía trước.', 123, 1, 'public/backend/images/aa.jpg', 0, 3),
-(9, 'pro 8', '23', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 12, 1, 'public/backend/images/aa.jpg', 0, 2),
-(10, 'Pro 234', '434', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 12, 1, 'public/backend/images/aa.jpg', 0, 1),
-(11, 'Pro1324', '3232', '33435r', 21, 1, 'public/backend/images/aa.jpg', 0, 1),
-(12, 'Nokia lumia4354', '43', 'fsgfds', 12, 1, 'public/backend/images/aa.jpg', 0, 2),
-(13, 'Nokia lumia 43', '21', '213edq', 21, 1, 'public/backend/images/aa.jpg', 0, 3),
-(14, 'Nokia lumia 3213', '34', 'savcdsv', 2121, 1, 'public/backend/images/aa.jpg', 0, 3),
-(15, 'Nokia lumia232', '332', 'rewt4fds', 32, 1, 'public/backend/images/aa.jpg', 0, 3),
-(16, 'Nokia lumia43t', '33', 'scdsfcds', 43, 1, 'public/backend/images/aa.jpg', 0, 3),
-(17, 'Nokia lumia45465', '54', 'fdfd', 12, 1, 'public/backend/images/aa.jpg', 0, 3),
-(18, 'Nokia lumia545', '32', 'dbhgfdbfds', 23, 1, 'public/backend/images/aa.jpg', 0, 1),
-(19, 'Nokia lumia32r', '43', 'fvdsvgfd', 32, 1, 'public/backend/images/aa.jpg', 0, 1),
-(20, 'Nokia lumia32r', '0', 'w', 0, 1, 'public/backend/images/aa.jpg', 0, 1),
-(21, 'Nokia lumia56', '32', 'gfdsxfd', 0, 1, 'public/backend/images/aa.jpg', 0, 1),
-(22, 'Nokia lumia4535', '35', 'dsàv', 0, 1, 'public/backend/images/aa.jpg', 0, 1),
-(23, 'Nokia lumia th', '32', 'vfdsg', 12, 1, 'public/backend/images/aa.jpg', 0, 1),
-(24, 'Nokia lumia 3234', '345', 'gfdfds', 12, 1, 'public/backend/images/aa.jpg', 0, 2),
-(25, 'Nokia lumia32t', '34', 'sagfdshgfdhg', 0, 1, 'public/backend/images/aa.jpg', 0, 2),
-(26, 'Nokia lumia32ghh', '12', 'fdsgfds', 12, 1, 'public/backend/images/aa.jpg', 0, 2),
-(27, 'pro999999', '12', 'cdsds', 12, 1, 'public/backend/images/aa.jpg', 1, 1),
-(28, 'hghghgh', '12', '12132', 1223, 1, 'public/backend/images/aa.jpg', 0, 2),
-(29, 'hghghgh', '12', '12132', 1223, 1, 'public/backend/images/aa.jpg', 0, 1),
-(30, 'hihi', '12', '21', 212, 1, 'public/backend/images/aa.jpg', 0, 2);
+(2, 'Pro2222', '12.11', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 12, 1, 'public/backend/images/aa.jpg', 2, 0),
+(3, 'pro3', '231.16', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 121, 1, 'public/backend/images/aa.jpg', 0, 0),
+(4, 'Pro 0003', '12.16', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 121, 1, 'public/backend/images/aa.jpg', 3, 3),
+(5, 'pro4', '21.00', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 121, 1, 'public/backend/images/aa.jpg', 4, 3),
+(6, 'Pro 6', '54.00', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 54, 1, 'public/backend/images/aa.jpg', 5, 2),
+(7, 'sdd', '0.00', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 1, 1, 'public/backend/images/aa.jpg', 0, 1),
+(8, 'Nokia lumia', '123.00', 'Lumia 520 sẽ nằm trong phân khúc smartphone tầm trung bình thấp với màn hình 4 inch dùng công nghệ Super Sensitive Touch (cho phép người dùng thao tác bằng cả găng tay dày), chip lõi kép tốc độ 1 GHz, RAM 512 MB và dung lượng lưu trữ trong 8 GB. Lumia 520 hỗ trợ khe cắm thẻ nhớ ngoài, camera sau 5 megapixel và không có camera trước. Trong khi đó, Lumia 720 sở hữu cấu hình gần như tương đồng với Lumia 520 nhưng dùng camera sau 6 megapixel, màn hình 4,3 inch và được tích hợp camera 2 megapixel phía trước.', 123, 1, 'public/backend/images/aa.jpg', 0, 3),
+(9, 'pro 8', '23.00', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 12, 1, 'public/backend/images/aa.jpg', 1, 2),
+(10, 'Pro 234', '434.00', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 12, 1, 'public/backend/images/aa.jpg', 0, 1),
+(11, 'Pro1324', '3232.00', '33435r', 21, 1, 'public/backend/images/aa.jpg', 0, 1),
+(12, 'Nokia lumia4354', '43.00', 'fsgfds', 12, 1, 'public/backend/images/aa.jpg', 0, 2),
+(13, 'Nokia lumia 43', '21.00', '213edq', 21, 1, 'public/backend/images/aa.jpg', 0, 3),
+(14, 'Nokia lumia 3213', '34.00', 'savcdsv', 2121, 1, 'public/backend/images/aa.jpg', 0, 3),
+(15, 'Nokia lumia232', '332.00', 'rewt4fds', 32, 1, 'public/backend/images/aa.jpg', 0, 3),
+(16, 'Nokia lumia43t', '33.00', 'scdsfcds', 43, 1, 'public/backend/images/aa.jpg', 0, 3),
+(17, 'Nokia lumia45465', '54.00', 'fdfd', 12, 1, 'public/backend/images/aa.jpg', 0, 3),
+(18, 'Nokia lumia545', '32.00', 'dbhgfdbfds', 23, 1, 'public/backend/images/aa.jpg', 0, 1),
+(19, 'Nokia lumia32r', '43.00', 'fvdsvgfd', 32, 1, 'public/backend/images/aa.jpg', 0, 1),
+(20, 'Nokia lumia32r', '0.00', 'w', 0, 1, 'public/backend/images/aa.jpg', 0, 1),
+(21, 'Nokia lumia56', '32.00', 'gfdsxfd', 0, 1, 'public/backend/images/aa.jpg', 0, 1),
+(22, 'Nokia lumia4535', '35.00', 'dsàv', 0, 1, 'public/backend/images/aa.jpg', 0, 1),
+(23, 'Nokia lumia th', '32.00', 'vfdsg', 12, 1, 'public/backend/images/aa.jpg', 0, 1),
+(24, 'Nokia lumia 3234', '345.00', 'gfdfds', 12, 1, 'public/backend/images/aa.jpg', 0, 2),
+(25, 'Nokia lumia32t', '34.00', 'sagfdshgfdhg', 0, 1, 'public/backend/images/aa.jpg', 0, 2),
+(26, 'Nokia lumia32ghh', '12.00', 'fdsgfds', 12, 1, 'public/backend/images/aa.jpg', 0, 2),
+(27, 'pro999999', '12.00', 'cdsds', 12, 1, 'public/backend/images/aa.jpg', 0, 1),
+(28, 'hghghgh', '12.00', '12132', 1223, 1, 'public/backend/images/aa.jpg', 0, 2),
+(29, 'hghghgh', '12.00', '12132', 1223, 1, 'public/backend/images/aa.jpg', 0, 1),
+(30, 'hihi', '12.00', '21', 212, 1, 'public/backend/images/aa.jpg', 0, 2);
 
 -- --------------------------------------------------------
 

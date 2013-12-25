@@ -72,11 +72,14 @@ class Model_products extends CI_Model {
 		return $query->result_array();
 	}
 
-	public function limit_product()
+	public function limit_product($slide_show = FALSE)
 	{
 		$this->set_data();
 		$this->db->where('status', 1);
-		$this->db->limit($this->num_row, $this->start);
+		if (!$slide_show)
+		{
+			$this->db->limit($this->num_row, $this->start);
+		}
 		$query = $this->db->get($this->table_name);
 		return $query->result_array();
 	}
@@ -85,7 +88,41 @@ class Model_products extends CI_Model {
 	{
 		$this->db->where('c_id', $c_id);
 		$query = $this->db->get('cat_and_pro');
-		return $query->result_array();
+		$arr_pro_id = array();
+		foreach ($query->result_array() as $pro_id)
+		{
+			$arr_pro_id[] = $pro_id['p_id'];
+		}
+		return $arr_pro_id;
 	}
 
+	public function maker_product($c_id)
+	{
+		$arr_product = $this->product_category($c_id);
+		if (count($arr_product) > 0)
+		{
+			$arr = implode(',', $arr_product);
+			$sql_query = "SELECT DISTINCT `m_id` FROM `products` WHERE `p_id` IN ($arr)";
+			$query = $this->db->query($sql_query);
+			$arr_maker_id = array();
+			foreach ($query->result_array() as $pro)
+			{
+				$arr_maker_id[] = $pro['m_id'];
+			}
+			return $arr_maker_id;
+		}
+		return NULL;
+	}
+
+	public function product_in_category($arr_c_id)
+	{
+		$this->db->where_in('c_id', $arr_c_id);
+		$query = $this->db->get('cat_and_pro');
+		$arr_pro_id = array();
+		foreach ($query->result_array() as $pro_id)
+		{
+			$arr_pro_id[] = $pro_id['p_id'];
+		}
+		return $arr_pro_id;
+	}
 }

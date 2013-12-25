@@ -1,4 +1,4 @@
-<script src="<?php echo base_url('public/fontend/js/my_js.js'); ?>" type="text/javascript"></script>
+<?php $this->load->view('default/product/left'); ?>
 <div class="right">
 	<div class="sort_by">
 		Product
@@ -62,20 +62,20 @@
 				<div class="boxes">
 					<div class="cl">&nbsp;</div>
 					<?php
-					foreach ($data['list_product'] as $product)
-					{
+					foreach ($data['list_product'] as $product):
 						?>
 						<div class="box">
 							<a href="<?php echo base_url('product/detail?p_id=' . $product['p_id']) ?>">
 								<img src="<?php echo base_url($product['thumb']) ?>" alt=""/>
 
 								<h3><?php echo $product['name'] ?></h3>
-								<?php echo '$' . $product['price'] ?>
+								<?php echo '$' . round($product['price'],2) ?>
 							</a>
 						</div>
 					<?php
-					}
+					endforeach;
 					$num_page = intval($data['num_page']);
+					if($num_page>1):
 					$url = '#?page';
 					$class_name = 'event_page';
 					?>
@@ -113,6 +113,7 @@
 						?>
 						<a href="#" class="<?php echo $class_name ?>" id="<?php echo $num_page - 1 ?>">End</a>
 					</div>
+					<?php endif;?>
 				</div>
 			</div>
 		</section>

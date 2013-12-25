@@ -83,4 +83,24 @@ class Model_product extends CI_Model {
 		}
 		return TRUE;
 	}
+
+	public function product_selected($selected)
+	{
+		$this->db->where('selected', $selected);
+		$query = $this->db->get($this->table_name);
+		return $query->result_array();
+	}
+
+	public function set_selected($selected)
+	{
+		if (intval($selected) > 0)
+		{
+			$product = $this->product_selected($selected);
+			if (isset($product[0]['selected']))
+			{
+				$arr_data=array('selected'=>0);
+				$this->update($arr_data,$product[0]['p_id']);
+			}
+		}
+	}
 }

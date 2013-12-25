@@ -28,25 +28,36 @@ $arr_m_id = rtrim($arr_m_id, ',');
 
 	});
 </script>
+<script src="<?php echo base_url('public/fontend/js/my_js.js'); ?>" type="text/javascript"></script>
 <div class="left">
 	<div class="menu_left">
 		<div class="left_title">Brands</div>
 		<div class="left_content">
 			<?php
+			if(isset($data['makers']) && count($data['makers'])>0):
 			foreach ($data['makers'] as $makers):
-				if (isset($filter_by['arr_m_id']) && $filter_by['arr_m_id'] !== 'NULL')
-				{
-					if (in_array($makers['m_id'], $filter_by['arr_m_id']))
-						$checked = 'checked';
-				}
+				if (isset($filter_by['arr_m_id']) && $filter_by['arr_m_id'] !== 'NULL' && in_array($makers['m_id'],$filter_by['arr_m_id'])):
+					?>
+					<input type="checkbox" class="event_makers" checked
+						   id="<?php echo 'makerid_' . $makers['m_id'] ?>" name="cb_maker[]"
+						   id="<?php echo $makers['m_id'] ?>"
+						/> <?php echo $makers['name'] ?>
+					<br/>
+				<?php else:
+					?>
+					<input type="checkbox" class="event_makers"
+						   id="<?php echo 'makerid_' . $makers['m_id'] ?>" name="cb_maker[]"
+						   id="<?php echo $makers['m_id'] ?>"
+						/> <?php echo $makers['name'] ?>
+					<br/>
+				<?php
+				endif;
 				?>
-				<input type="checkbox" <?php echo (isset($checked)) ? $checked : '' ?> class="event_makers"
-					   id="<?php echo 'makerid_' . $makers['m_id'] ?>" name="cb_maker[]"
-					   id="<?php echo $makers['m_id'] ?>"
-					   /> <?php echo $makers['name'] ?>
-				<br/>
 			<?php
 			endforeach;
+			else:
+				echo '<b>No Maker</b>';
+			endif;
 			?>
 		</div>
 	</div>
@@ -59,7 +70,7 @@ $arr_m_id = rtrim($arr_m_id, ',');
 				<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
 			</p>
 
-			<div id="slider-range" ></div>
+			<div id="slider-range"></div>
 		</div>
 	</div>
 </div>

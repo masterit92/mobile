@@ -48,24 +48,24 @@ class Product extends My_controller {
 	public function product_category()
 	{
 		$c_id = intval($this->input->get('c_id'));
+		$arr_c_id = array($this->input->get('c_id'));
+		$this->model_category->category_child($c_id, $arr_c_id);
 		$this->filter_by['c_id'] = $c_id;
+		$this->filter_by['arr_c_id'] = $arr_c_id;
 		$this->session->set_userdata('filter_by', $this->filter_by);
-		$arr_pro_id = array();
-		foreach ($this->model_products->product_category($c_id) as $pro_id)
-		{
-			$arr_pro_id[] = $pro_id['p_id'];
-		}
+
+		$arr_pro_id = $this->model_products->product_in_category($arr_c_id);
 		if (count($arr_pro_id) > 0)
 		{
 			$arr_where_in = array('p_id' => $arr_pro_id);
 			$this->model_products->arr_where_in = $arr_where_in;
 			$this->response['data']['list_product'] = $this->model_products->limit_product();
 			$this->response['data']['num_page'] = ceil($this->model_products->get_num_page() / $this->model_products->num_row);
-		}
-		else
+		} else
 		{
 			$this->response['data']['list_product'] = NULL;
 		}
+		$this->maker_category($c_id);
 		$this->response['title'] = "Product";
 		$this->response['template'] = 'default/product/index';
 		$this->load->view("default/layout", $this->response);
@@ -77,13 +77,10 @@ class Product extends My_controller {
 		$arr_where_in = array();
 		$arr_like = array();
 		$arr_order_by = array();
-		if (isset($this->filter_by['c_id']))
+		if (isset($this->filter_by['arr_c_id']))
 		{
-			$arr_pro_id = array();
-			foreach ($this->model_products->product_category(intval($this->filter_by['c_id'])) as $pro_id)
-			{
-				$arr_pro_id[] = $pro_id['p_id'];
-			}
+			$arr_c_id = $this->filter_by['arr_c_id'];
+			$arr_pro_id = $this->model_products->product_in_category($arr_c_id);;
 			$arr_where_in['p_id'] = $arr_pro_id;
 		}
 		if (isset($this->filter_by['price_min']) && isset($this->filter_by['price_max']))
@@ -98,8 +95,7 @@ class Product extends My_controller {
 		if (isset($this->filter_by['sort_name']))
 		{
 			$arr_order_by['name'] = $this->filter_by['sort_name'];
-		}
-		else if (isset($this->filter_by['sort_price']))
+		} else if (isset($this->filter_by['sort_price']))
 		{
 			$arr_order_by['price'] = $this->filter_by['sort_price'];
 		}
@@ -146,12 +142,15 @@ class Product extends My_controller {
 			if (count($arr_m_id) > 0)
 			{
 				$this->filter_by['arr_m_id'] = $arr_m_id;
-			}
-			else
+			} else
 			{
 				$this->filter_by['arr_m_id'] = NULL;
 			}
 			$this->session->set_userdata('filter_by', $this->filter_by);
+		}
+		if (isset($this->filter_by['c_id']))
+		{
+			$this->maker_category($this->filter_by['c_id']);
 		}
 		$this->filter();
 	}
@@ -163,8 +162,7 @@ class Product extends My_controller {
 			$sort_name = $this->input->post('sort_name');
 			$this->filter_by['sort_name'] = $sort_name;
 			$this->session->set_userdata('filter_by', $this->filter_by);
-		}
-		else
+		} else
 		{
 			unset($this->filter_by['sort_name']);
 			$this->session->set_userdata('filter_by', $this->filter_by);
@@ -174,8 +172,7 @@ class Product extends My_controller {
 			$sort_price = $this->input->post('sort_price');
 			$this->filter_by['sort_price'] = $sort_price;
 			$this->session->set_userdata('filter_by', $this->filter_by);
-		}
-		else
+		} else
 		{
 			unset($this->filter_by['sort_price']);
 			$this->session->set_userdata('filter_by', $this->filter_by);
@@ -198,8 +195,7 @@ class Product extends My_controller {
 			$this->response['title'] = "Product";
 			$this->response['template'] = 'default/product/index';
 			$this->load->view("default/layout", $this->response);
-		}
-		else
+		} else
 		{
 			redirect('product');
 		}
@@ -209,10 +205,24 @@ class Product extends My_controller {
 	{
 		if ($this->input->post('filter'))
 		{
+			if ($this->input->post('filter') === 'c_id')
+			{
+				unset($this->filter_by['arr_c_id']);
+			}
+			if ($this->input->post('filter') === 'price_min' OR $this->input->post('filter') === 'price_max')
+			{
+				unset($this->filter_by['price_min']);
+				unset($this->filter_by['price_max']);
+			}
 			unset($this->filter_by[$this->input->post('filter')]);
 			$this->session->set_userdata('filter_by', $this->filter_by);
 		}
 		$this->filter();
 	}
 
+	public function maker_category($c_id)
+	{
+		$arr_maker_cat = $this->model_products->maker_product($c_id);
+		$this->response['data']['makers'] = $this->model_maker->maker_by_id($arr_maker_cat);
+	}
 }

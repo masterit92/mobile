@@ -25,8 +25,7 @@ class Product extends My_controller {
 		if ($this->input->post('page'))
 		{
 			$this->load->view("default/product/index", $this->response);
-		}
-		else
+		} else
 		{
 			$this->response['template'] = 'default/product/index';
 			$this->load->view("default/layout", $this->response);
@@ -42,8 +41,7 @@ class Product extends My_controller {
 			if ($status === 1)
 			{
 				$status = 0;
-			}
-			else
+			} else
 			{
 				$status = 1;
 			}
@@ -95,15 +93,18 @@ class Product extends My_controller {
 			$thumb = $this->upload_img('thumb');
 			$arr_c_id = $this->input->post('cat_id');
 			$m_id = $this->input->post('m_id');
-			$arr_data = array('name' => $name, 'price' => $price, 'description' => $description, 'quantity' => $quantity, 'm_id' => $m_id);
-			$selected = 0;
-			if ($this->input->post('selected'))
-			{
-				$selected = 1;
-			}
+			$selected = $this->input->post('selected');
+			$arr_data = array(
+				'name' => $name,
+				'price' => $price,
+				'description' => $description,
+				'quantity' => $quantity,
+				'm_id' => $m_id,
+				'selected' => $selected
+			);
 			if (!empty($name) && intval($quantity))
 			{
-				$arr_data['selected'] = $selected;
+				$this->model_product->set_selected($selected);
 				if ($thumb !== NULL)
 				{
 					$arr_data['thumb'] = $thumb;
@@ -133,8 +134,7 @@ class Product extends My_controller {
 							$this->model_product->insert_product_category($data_c_p);
 						}
 					}
-				}
-				else
+				} else
 				{
 					$p_id_new = $this->model_product->insert($arr_data);
 					foreach ($arr_c_id as $c_id)

@@ -29,5 +29,13 @@ class Model_category extends CI_Model {
 		$query = $this->db->get($this->table_name);
 		return $query->result_array();
 	}
-
+	public function category_child($parent_id, &$arr_child=array()){
+		foreach ($this->all_category() as $cat)
+		{
+			if ($cat['parent_id'] == $parent_id){
+				$arr_child[]=$cat['c_id'];
+				$this->category_child($cat['c_id'],$arr_child);
+			}
+		}
+	}
 }
