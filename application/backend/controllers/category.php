@@ -73,15 +73,18 @@ class Category extends My_controller {
 		{
 			$name = $this->input->post('category_name');
 			$parent_id = $this->input->post('parent_id');
-			$arr_data = array('name' => $name, 'parent_id' => $parent_id);
-			if ($this->input->post('c_id'))
+			if (!empty($name))
 			{
-				$c_id = intval($this->input->post('c_id'));
-				$this->model_category->update($arr_data, $c_id);
-			}
-			else
-			{
-				$this->model_category->insert($arr_data);
+				$arr_data = array('name' => $name, 'parent_id' => $parent_id);
+				if ($this->input->post('c_id'))
+				{
+					$c_id = intval($this->input->post('c_id'));
+					$this->model_category->update($arr_data, $c_id);
+				}
+				else
+				{
+					$this->model_category->insert($arr_data);
+				}
 			}
 		}
 		redirect('admin/category');

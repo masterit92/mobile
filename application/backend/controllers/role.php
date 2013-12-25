@@ -71,7 +71,7 @@ class Role extends My_controller {
 		if ($this->input->post('save'))
 		{
 			$role_name = $this->input->post('role_name');
-			if ($this->model_role->check_role($role_name))
+			if ($this->model_role->check_role($role_name) && !empty($role_name))
 			{
 				$arr_date = array('name' => $role_name);
 				if ($this->input->post('role_id'))
@@ -86,7 +86,7 @@ class Role extends My_controller {
 			}
 			else
 			{
-				$this->session->set_flashdata('error', 'Role name exists!');
+				$this->session->set_flashdata('error', 'Role name exists or empty!');
 			}
 		}
 		redirect('admin/role');

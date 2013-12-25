@@ -21,12 +21,12 @@ class Maker extends My_controller {
 	public function delete()
 	{
 		$m_id = intval($this->input->get('m_id'));
-		if ($m_id !== 0)
+		if ($m_id !== maker_default)
 		{
 			$arr_pro = $this->model_maker->product_maker($m_id);
 			foreach ($arr_pro as $pro)
 			{
-				$arr_data = array('m_id' => 0);
+				$arr_data = array('m_id' => maker_default);
 				$this->model_product->update($arr_data, $pro['p_id']);
 			}
 			$this->model_maker->delete($m_id);
@@ -68,15 +68,18 @@ class Maker extends My_controller {
 		if ($this->input->post('save'))
 		{
 			$name = $this->input->post('name');
-			$arr_data = array('name' => $name);
-			if ($this->input->post('m_id'))
+			if (!empty($name))
 			{
-				$m_id = intval($this->input->post('m_id'));
-				$this->model_maker->update($arr_data, $m_id);
-			}
-			else
-			{
-				$this->model_maker->insert($arr_data);
+				$arr_data = array('name' => $name);
+				if ($this->input->post('m_id'))
+				{
+					$m_id = intval($this->input->post('m_id'));
+					$this->model_maker->update($arr_data, $m_id);
+				}
+				else
+				{
+					$this->model_maker->insert($arr_data);
+				}
 			}
 		}
 		redirect('admin/maker');

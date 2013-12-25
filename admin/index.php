@@ -1,5 +1,5 @@
 <?php
-
+define('maker_default',0);
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT

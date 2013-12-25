@@ -96,49 +96,52 @@ class Product extends My_controller {
 			$arr_c_id = $this->input->post('cat_id');
 			$m_id = $this->input->post('m_id');
 			$arr_data = array('name' => $name, 'price' => $price, 'description' => $description, 'quantity' => $quantity, 'm_id' => $m_id);
-			$selected=0;
+			$selected = 0;
 			if ($this->input->post('selected'))
 			{
 				$selected = 1;
 			}
-			$arr_data['selected'] = $selected;
-			if ($thumb !== NULL)
+			if (!empty($name) && intval($quantity))
 			{
-				$arr_data['thumb'] = $thumb;
-			}
-			if ($this->input->post('p_id'))
-			{
-				$p_id = intval($this->input->post('p_id'));
+				$arr_data['selected'] = $selected;
 				if ($thumb !== NULL)
 				{
-					$product = $this->model_product->product_by_id($p_id);
-					unlink($product['thumb']);
+					$arr_data['thumb'] = $thumb;
 				}
-				$this->model_product->update($arr_data, $p_id);
-				$arr_p_c = $this->model_product->product_category($p_id);
-				foreach ($arr_p_c as $value)
+				if ($this->input->post('p_id'))
 				{
-					if (!in_array($value['c_id'], $arr_c_id))
+					$p_id = intval($this->input->post('p_id'));
+					if ($thumb !== NULL)
 					{
-						$this->model_product->delete_product_category($p_id, $value['c_id']);
+						$product = $this->model_product->product_by_id($p_id);
+						unlink($product['thumb']);
+					}
+					$this->model_product->update($arr_data, $p_id);
+					$arr_p_c = $this->model_product->product_category($p_id);
+					foreach ($arr_p_c as $value)
+					{
+						if (!in_array($value['c_id'], $arr_c_id))
+						{
+							$this->model_product->delete_product_category($p_id, $value['c_id']);
+						}
+					}
+					foreach ($arr_c_id as $c_id)
+					{
+						if ($this->model_product->check_product_category($p_id, $c_id))
+						{
+							$data_c_p = array('p_id' => $p_id, 'c_id' => $c_id);
+							$this->model_product->insert_product_category($data_c_p);
+						}
 					}
 				}
-				foreach ($arr_c_id as $c_id)
+				else
 				{
-					if ($this->model_product->check_product_category($p_id, $c_id))
+					$p_id_new = $this->model_product->insert($arr_data);
+					foreach ($arr_c_id as $c_id)
 					{
-						$data_c_p = array('p_id' => $p_id, 'c_id' => $c_id);
+						$data_c_p = array('p_id' => $p_id_new, 'c_id' => $c_id);
 						$this->model_product->insert_product_category($data_c_p);
 					}
-				}
-			}
-			else
-			{
-				$p_id_new = $this->model_product->insert($arr_data);
-				foreach ($arr_c_id as $c_id)
-				{
-					$data_c_p = array('p_id' => $p_id_new, 'c_id' => $c_id);
-					$this->model_product->insert_product_category($data_c_p);
 				}
 			}
 		}

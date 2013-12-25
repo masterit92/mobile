@@ -93,30 +93,23 @@ class Users extends My_controller {
 			$full_name = $this->input->post('full_name');
 			$password = $this->input->post('password');
 			$re_password = $this->input->post('re_password');
-			if ($this->input->post('user_id'))
+			if (!empty($email) && !empty($password) && strcmp($password, $re_password) === 0)
 			{
-				$user_id = intval($this->input->post('user_id'));
-				if ($this->input->post('full_name'))
+				if ($this->input->post('user_id'))
 				{
-					$arr_data = array('full_name' => $full_name);
-					$this->model_users->update($arr_data, $user_id);
-				}
-				if ($this->input->post('password') && $this->input->post('re_password'))
-				{
-					if (strcmp($password, $re_password) == 0)
+					$user_id = intval($this->input->post('user_id'));
+					if ($this->input->post('full_name'))
+					{
+						$arr_data = array('full_name' => $full_name);
+						$this->model_users->update($arr_data, $user_id);
+					}
+					if ($this->input->post('password') && $this->input->post('re_password'))
 					{
 						$arr_data = array('password' => $password);
 						$this->model_users->update($arr_data, $user_id);
 					}
-					else
-					{
-						$this->session->set_flashdata('error', 'Input Form Eror!');
-					}
 				}
-			}
-			else
-			{
-				if (strcmp($password, $re_password) == 0 && !empty($email) && !empty($full_name))
+				else
 				{
 					if ($this->model_users->check_email($email))
 					{
@@ -127,11 +120,12 @@ class Users extends My_controller {
 					{
 						$this->session->set_flashdata('error', 'Email exists!');
 					}
+
 				}
-				else
-				{
-					$this->session->set_flashdata('error', 'Input Form Eror!');
-				}
+			}
+			else
+			{
+				$this->session->set_flashdata('error', 'Input Form Eror!');
 			}
 		}
 		redirect('admin/users');
