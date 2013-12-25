@@ -96,11 +96,12 @@ class Product extends My_controller {
 			$arr_c_id = $this->input->post('cat_id');
 			$m_id = $this->input->post('m_id');
 			$arr_data = array('name' => $name, 'price' => $price, 'description' => $description, 'quantity' => $quantity, 'm_id' => $m_id);
+			$selected=0;
 			if ($this->input->post('selected'))
 			{
 				$selected = 1;
-				$arr_data['selected'] = $selected;
 			}
+			$arr_data['selected'] = $selected;
 			if ($thumb !== NULL)
 			{
 				$arr_data['thumb'] = $thumb;

@@ -85,7 +85,7 @@ if (isset($data['product_category']))
 						{
 							if (isset($product) && $product['m_id'] == $maker['m_id'])
 							{
-								echo '<option selected value="' . $maker['m_id'] . '">' . $maker['name'] . '</option>';
+								echo '<option  value="' . $maker['m_id'] . '" selected>' . $maker['name'] . '</option>';
 							}
 							else
 							{
