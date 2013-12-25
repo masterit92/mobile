@@ -1,4 +1,5 @@
 <?php
+
 class Role extends My_controller {
 
 	public function __construct()
