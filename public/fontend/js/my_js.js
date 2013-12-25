@@ -2,7 +2,39 @@ $(function() {
     $('.event_back').click(function() {
         history.go(-1);
     });
+    $('.event_sort_name').click(function () {
+        var sort_name = $(this).attr('sort');
+        var url= $(this).attr('url');
+        $('#container').load(url, {'sort_name': sort_name});
+    });
+    $('.event_sort_price').click(function () {
+        var sort_price = $(this).attr('sort');
+        var url= $(this).attr('url');
+        $('#container').load(url, {'sort_price': sort_price});
+    });
+    $('.event_page').click(function () {
+        var page = $(this).attr('id');
+        page = parseInt(page) + 1;
+        var url= $(this).attr('url');
+        $('#container').load(url, {'page': page});
+    });
+    $('.event_del_filter').click(function(){
+        var filter = $(this).attr('filter');
+        var url= $(this).attr('url');
+        $('#container').load(url, {'filter': filter});
+    });
 
+    $("#slider-range").slider({
+        change: function (event, ui) {
+            var price_rang = $("#amount").val();
+            var url= $(this).attr('url');
+            $('#container').load(url, {'price_rang': price_rang});
+        }});
+    $('.event_makers').click(function () {
+        var m_id_check = get_arr_check(arr_m_id);
+        var url= $(this).attr('url');
+        $('#container').load(url, {'arr_m_id': m_id_check});
+    });
 });
 function get_arr_check(arr_m_id) {
     arr_check = new Array();
