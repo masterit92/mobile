@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2013 at 07:09 PM
--- Server version: 5.5.32
--- PHP Version: 5.4.19
+-- Generation Time: Dec 25, 2013 at 04:43 AM
+-- Server version: 5.6.11
+-- PHP Version: 5.5.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `shop_phone`
 --
+CREATE DATABASE IF NOT EXISTS `shop_phone` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `shop_phone`;
 
 -- --------------------------------------------------------
 
@@ -162,15 +164,15 @@ CREATE TABLE IF NOT EXISTS `products` (
 --
 
 INSERT INTO `products` (`p_id`, `name`, `price`, `description`, `quantity`, `status`, `thumb`, `selected`, `m_id`) VALUES
-(2, 'Pro2222', '12', '12', 12, 1, 'public/backend/images/aa.jpg', 1, 5),
-(3, 'pro3', '231', '21', 121, 1, 'public/backend/images/aa.jpg', 1, 5),
-(4, 'Pro 3', '12', 'ffdfd', 121, 1, 'public/backend/images/aa.jpg', 0, 3),
-(5, 'pro4', '21', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 121, 1, 'public/backend/images/aa.jpg', 0, 3),
-(6, 'Pro 6', '54', '545', 54, 1, 'public/backend/images/aa.jpg', 1, 2),
-(7, 'sdd', '0', '12qwqdq', 1, 1, 'public/backend/images/aa.jpg', 1, 1),
+(2, 'Pro2222', '12', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 12, 1, 'public/backend/images/aa.jpg', 1, 5),
+(3, 'pro3', '231', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 121, 1, 'public/backend/images/aa.jpg', 1, 5),
+(4, 'Pro 0003', '12', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 121, 1, 'public/backend/images/aa.jpg', 0, 3),
+(5, 'pro4', '21', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 121, 1, 'public/backend/images/aa.jpg', 1, 3),
+(6, 'Pro 6', '54', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 54, 1, 'public/backend/images/aa.jpg', 1, 2),
+(7, 'sdd', '0', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 1, 1, 'public/backend/images/aa.jpg', 1, 1),
 (8, 'Nokia lumia', '123', 'Lumia 520 sẽ nằm trong phân khúc smartphone tầm trung bình thấp với màn hình 4 inch dùng công nghệ Super Sensitive Touch (cho phép người dùng thao tác bằng cả găng tay dày), chip lõi kép tốc độ 1 GHz, RAM 512 MB và dung lượng lưu trữ trong 8 GB. Lumia 520 hỗ trợ khe cắm thẻ nhớ ngoài, camera sau 5 megapixel và không có camera trước. Trong khi đó, Lumia 720 sở hữu cấu hình gần như tương đồng với Lumia 520 nhưng dùng camera sau 6 megapixel, màn hình 4,3 inch và được tích hợp camera 2 megapixel phía trước.', 123, 1, 'public/backend/images/aa.jpg', 0, 3),
-(9, 'pro 8', '23', 'dcsfvds', 12, 1, 'public/backend/images/aa.jpg', 0, 2),
-(10, 'Pro 234', '434', 'hgnf', 12, 1, 'public/backend/images/aa.jpg', 0, 1),
+(9, 'pro 8', '23', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 12, 1, 'public/backend/images/aa.jpg', 0, 2),
+(10, 'Pro 234', '434', 'The Nokia Lumia 1520 is a big-screen behemoth that will truly blur the line between smartphone and tablet when it is released later this month as an exclusive for AT&T customers in the U.S. While the Nokia Lumia 1520 is only 8.6mm thick when not measuring the phone''s bumped-out camera, it is 6mm wider than the enormous Samsung Galaxy Note 3. ', 12, 1, 'public/backend/images/aa.jpg', 0, 1),
 (11, 'Pro1324', '3232', '33435r', 21, 1, 'public/backend/images/aa.jpg', 0, 1),
 (12, 'Nokia lumia4354', '43', 'fsgfds', 12, 1, 'public/backend/images/aa.jpg', 0, 2),
 (13, 'Nokia lumia 43', '21', '213edq', 21, 1, 'public/backend/images/aa.jpg', 0, 3),
@@ -207,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `role` (
   KEY `status` (`status`),
   KEY `status_2` (`status`),
   KEY `role_id_2` (`role_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `role`
@@ -216,7 +218,8 @@ CREATE TABLE IF NOT EXISTS `role` (
 INSERT INTO `role` (`role_id`, `name`, `status`) VALUES
 (1, 'users', 1),
 (4, 'role', 1),
-(5, 'admin', 1);
+(5, 'admin', 1),
+(6, 'maker', 1);
 
 -- --------------------------------------------------------
 
@@ -237,6 +240,8 @@ CREATE TABLE IF NOT EXISTS `role_and_user` (
 INSERT INTO `role_and_user` (`user_id`, `role_id`) VALUES
 (1, 1),
 (1, 5),
+(8, 4),
+(8, 5),
 (9, 1),
 (9, 4);
 
