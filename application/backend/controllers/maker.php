@@ -42,7 +42,7 @@ class Maker extends My_controller {
 	{
 		$m_id = intval($this->input->get('m_id'));
 		$maker = $this->model_maker->maker_by_id($m_id);
-		if (isset($maker['m_id']))
+		if (isset($maker[0]['m_id']))
 		{
 			$this->response['data']['maker'] = $maker;
 			$this->response['title'] = "Maker";
