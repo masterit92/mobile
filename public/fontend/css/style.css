@@ -247,7 +247,7 @@ div .detail h1{
     color: #000;
     margin-bottom: 30px;
 }
-div .detail p{
+.detail_title{
     color: #e10b0b;
     font-size: 16px;
     font-weight: bold;
@@ -257,7 +257,7 @@ div .detail b{
     margin-left: 10px;
 }
 div .sort_by{
-    margin-left: 75px;
+    margin: 0 auto;
     background: #1b1815;
     width: 800px;
     min-height: 25px;

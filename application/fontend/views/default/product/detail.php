@@ -11,11 +11,11 @@ $product = $data['product'][0];
 	<div class="detail_right">
 		<h1><?php echo strtoupper($product['name']) ?></h1>
 		<hr/>
-		<p>PRICE: <b><?php echo '$' . round($product['price'], 2) ?></b></p>
+		<p class="detail_title">PRICE: <b><?php echo '$' . round($product['price'], 2) ?></b></p>
 
-		<p>DESCRIPTION:</p><b><?php echo $product['description'] ?></b>
+		<p class="detail_title">DESCRIPTION:</p><b><?php echo $product['description'] ?></b>
 
-		<p>MAKER:</p>
+		<p class="detail_title">MAKER:</p>
 		<b>
 			<?php
 			$maker = $this->model_maker->maker_by_id($product['m_id']);
@@ -23,7 +23,7 @@ $product = $data['product'][0];
 			?>
 		</b>
 
-		<p>
+		<p class="detail_title">
 			<?php echo $product['quantity'] > 0 ? 'IN STOCK!' : 'OUT STOCK!' ?>
 		</p>
 	</div>
