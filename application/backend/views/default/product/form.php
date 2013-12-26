@@ -38,10 +38,11 @@ if (isset($data['product_category']))
 						   value="<?php echo isset($product) ? $product['price'] : '' ?>" placeholder="Price"
 						   class="required"/>
 				</li>
-				<li><label for="Description" class="required">Description<span>*</span></label>
-					<input name="description" type="text" multiple id="description"
-						   value="<?php echo isset($product) ? $product['description'] : '' ?>"
-						   placeholder="Description" class="required"/>
+				<li><label for="Description" class="required">Description<span>*</span></label><br/>
+					<textarea name="description" id="description"
+							  value="" required><?php echo isset($product) ? $product['description'] : ''?></textarea>
+					<script type="text/javascript">CKEDITOR.replace('description');</script>
+
 				</li>
 				<li><label for="Quantity" class="required">Quantity<span>*</span></label>
 					<input name="quantity" type="text" id="quantity"
