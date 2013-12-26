@@ -6,14 +6,14 @@
 	<script type="text/javascript">
 		var url_root = '<?php echo base_url()?>';
 	</script>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<?php
 	$arr_file_css = array('style.css', 'flexslider.css', 'jqsimplemenu.css', 'slider_price.css');
-	$arr_file_js = array();
+	$arr_file_js = array('event_back.js');
 	echo $this->render->Render_js($arr_file_js, 'fontend');
 	echo $this->render->Render_css($arr_file_css, 'fontend');
 	?>
-	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<script src="<?php echo base_url('public/fontend/js/jquery.flexslider-min.js') ?>" type="text/javascript"></script>
 	<script src="<?php echo base_url('public/fontend/js/functions.js'); ?>" type="text/javascript"></script>
 

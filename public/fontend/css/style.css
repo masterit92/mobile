@@ -64,7 +64,7 @@ header .shell { position: relative; z-index: 40;}
 .flexslider ul.slides li .slide-cnt { padding: 24px 20px 22px 23px; position: absolute; top: 0px; right: 0; width: 205px; background: url(../images/slide-cnt.png) repeat 0 0; min-height: 299px;
                                       border-radius: 0px 5px 6px 0; -moz-border-radius: 0px 5px 6px 0; -webkit-border-radius: 0px 5px 6px 0; -o-border-radius: 0px 5px 6px 0; }
 .flexslider ul.slides li .slide-cnt h2 {  color: #ccc8bd; font-size: 23px; line-height: 30px; padding-bottom: 20px; }
-.flexslider ul.slides li .slide-cnt p { color: #ccc8bd; font-size: 13px; padding-bottom: 42px; min-height: 150px;}
+.flexslider ul.slides li .slide-cnt p { color: #ccc8bd; font-size: 13px; padding-bottom: 42px; }
 .flexslider ul.slides li .slide-cnt p a { font-size: 11px; }
 .flexslider ul.slides li .slide-cnt a.slider-btn { width: 205px; height: 35px; padding: 0 0 0 0; background: url(../images/slider-btn.png) repeat-x 0 0; display: block; text-align: center; position: relative; line-height: 35px;
                                                    font-size: 18px; font-weight: bold; color: #000; box-shadow: 0px 0px 5px rgba(0,0,0,0.3); -moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.3); -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.3); -o-box-shadow: 0px 0px 5px rgba(0,0,0,0.3); 

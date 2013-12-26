@@ -1,7 +1,4 @@
 $(function () {
-    $('.event_back').click(function () {
-        history.go(-10);
-    });
     $('.event_sort_name').click(function () {
         var sort_name = $(this).attr('sort');
         var url = url_root + 'product/sort';
