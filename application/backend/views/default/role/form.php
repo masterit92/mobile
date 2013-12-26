@@ -13,7 +13,7 @@ if (isset($data['role']))
 			<legend><span>Role Information</span></legend>
 			<ol>
 				<?php if (isset($role)): ?>
-					<input type="hidden" name="role_id" value="<?php $role['role_id'] ?>"/>
+					<input type="hidden" name="role_id" value="<?php echo $role['role_id'] ?>"/>
 				<?php endif; ?>
 				<li><label for="role name" class="required">Role Name<span>*</span></label>
 					<input name="role_name" type="text" id="role_name"
