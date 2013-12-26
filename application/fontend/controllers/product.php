@@ -61,7 +61,8 @@ class Product extends My_controller {
 			$this->model_products->arr_where_in = $arr_where_in;
 			$this->response['data']['list_product'] = $this->model_products->limit_product();
 			$this->response['data']['num_page'] = ceil($this->model_products->get_num_page() / $this->model_products->num_row);
-		} else
+		}
+		else
 		{
 			$this->response['data']['list_product'] = NULL;
 		}
@@ -95,7 +96,8 @@ class Product extends My_controller {
 		if (isset($this->filter_by['sort_name']))
 		{
 			$arr_order_by['name'] = $this->filter_by['sort_name'];
-		} else if (isset($this->filter_by['sort_price']))
+		}
+		else if (isset($this->filter_by['sort_price']))
 		{
 			$arr_order_by['price'] = $this->filter_by['sort_price'];
 		}
@@ -142,7 +144,8 @@ class Product extends My_controller {
 			if (count($arr_m_id) > 0)
 			{
 				$this->filter_by['arr_m_id'] = $arr_m_id;
-			} else
+			}
+			else
 			{
 				$this->filter_by['arr_m_id'] = NULL;
 			}
@@ -162,7 +165,8 @@ class Product extends My_controller {
 			$sort_name = $this->input->post('sort_name');
 			$this->filter_by['sort_name'] = $sort_name;
 			$this->session->set_userdata('filter_by', $this->filter_by);
-		} else
+		}
+		else
 		{
 			unset($this->filter_by['sort_name']);
 			$this->session->set_userdata('filter_by', $this->filter_by);
@@ -172,7 +176,8 @@ class Product extends My_controller {
 			$sort_price = $this->input->post('sort_price');
 			$this->filter_by['sort_price'] = $sort_price;
 			$this->session->set_userdata('filter_by', $this->filter_by);
-		} else
+		}
+		else
 		{
 			unset($this->filter_by['sort_price']);
 			$this->session->set_userdata('filter_by', $this->filter_by);
@@ -195,7 +200,8 @@ class Product extends My_controller {
 			$this->response['title'] = "Product";
 			$this->response['template'] = 'default/product/index';
 			$this->load->view("default/layout", $this->response);
-		} else
+		}
+		else
 		{
 			redirect('product');
 		}

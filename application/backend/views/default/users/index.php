@@ -23,7 +23,8 @@
 				if ($user['status'] == 1)
 				{
 					echo '<a href="' . base_url('admin/users/set_status?user_id=' . $user['user_id'] . '&status=' . $user['status']) . '">Active</a>';
-				} else
+				}
+				else
 				{
 					echo '<a href="' . base_url('admin/users/set_status?user_id=' . $user['user_id'] . '&status=' . $user['status']) . '">No Active</a>';
 				}

@@ -72,14 +72,11 @@ class Model_products extends CI_Model {
 		return $query->result_array();
 	}
 
-	public function limit_product($slide_show = FALSE)
+	public function limit_product()
 	{
 		$this->set_data();
 		$this->db->where('status', 1);
-		if (!$slide_show)
-		{
-			$this->db->limit($this->num_row, $this->start);
-		}
+		$this->db->limit($this->num_row, $this->start);
 		$query = $this->db->get($this->table_name);
 		return $query->result_array();
 	}

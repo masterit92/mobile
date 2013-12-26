@@ -83,7 +83,8 @@ if (isset($data['product_category']))
 							if (isset($product) && $product['selected'] == $i)
 							{
 								echo "<option value='$i' selected >Silde Show $i</option>";
-							} else
+							}
+							else
 							{
 								echo "<option value='$i'>Silde Show $i</option>";
 							}
@@ -99,7 +100,8 @@ if (isset($data['product_category']))
 							if (isset($product) && $product['m_id'] == $maker['m_id'])
 							{
 								echo '<option  value="' . $maker['m_id'] . '" selected>' . $maker['name'] . '</option>';
-							} else
+							}
+							else
 							{
 								echo '<option  value="' . $maker['m_id'] . '">' . $maker['name'] . '</option>';
 							}

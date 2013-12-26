@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<script type="text/javascript">
-		var url_root= '<?php echo base_url()?>';
+		var url_root = '<?php echo base_url()?>';
 	</script>
 	<?php
 	$arr_file_css = array('style.css', 'flexslider.css', 'jqsimplemenu.css', 'slider_price.css');

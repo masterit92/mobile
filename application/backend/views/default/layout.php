@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<script type="text/javascript">
-		var url_root= '<?php echo base_url()?>';
+		var url_root = '<?php echo base_url()?>';
 	</script>
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<?php

@@ -34,27 +34,28 @@ $arr_m_id = rtrim($arr_m_id, ',');
 		<div class="left_title">Brands</div>
 		<div class="left_content">
 			<?php
-			if(isset($data['makers']) && count($data['makers'])>0):
-			foreach ($data['makers'] as $makers):
-				if (isset($filter_by['arr_m_id']) && $filter_by['arr_m_id'] !== 'NULL' && in_array($makers['m_id'],$filter_by['arr_m_id'])):
+			if (isset($data['makers']) && count($data['makers']) > 0):
+				foreach ($data['makers'] as $makers):
+					if (isset($filter_by['arr_m_id']) && $filter_by['arr_m_id'] !== 'NULL' && in_array($makers['m_id'], $filter_by['arr_m_id'])):
+						?>
+						<input type="checkbox" class="event_makers" checked
+							   id="<?php echo 'makerid_' . $makers['m_id'] ?>" name="cb_maker[]"
+							   id="<?php echo $makers['m_id'] ?>"
+							/> <?php echo $makers['name'] ?>
+						<br/>
+					<?php
+					else:
+						?>
+						<input type="checkbox" class="event_makers"
+							   id="<?php echo 'makerid_' . $makers['m_id'] ?>" name="cb_maker[]"
+							   id="<?php echo $makers['m_id'] ?>"
+							/> <?php echo $makers['name'] ?>
+						<br/>
+					<?php
+					endif;
 					?>
-					<input type="checkbox" class="event_makers" checked
-						   id="<?php echo 'makerid_' . $makers['m_id'] ?>" name="cb_maker[]"
-						   id="<?php echo $makers['m_id'] ?>"
-						/> <?php echo $makers['name'] ?>
-					<br/>
-				<?php else:
-					?>
-					<input type="checkbox" class="event_makers"
-						   id="<?php echo 'makerid_' . $makers['m_id'] ?>" name="cb_maker[]"
-						   id="<?php echo $makers['m_id'] ?>"
-						/> <?php echo $makers['name'] ?>
-					<br/>
 				<?php
-				endif;
-				?>
-			<?php
-			endforeach;
+				endforeach;
 			else:
 				echo '<b>No Maker</b>';
 			endif;

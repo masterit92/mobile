@@ -50,10 +50,10 @@
 		?>
 		<p>
 			Sort by:
-			<a href="#"  class="event_sort_name" sort="DESC">Name&DoubleDownArrow;</a> -
-			<a href="#"  class="event_sort_name" sort="ASC">Name&DoubleUpArrow;</a> -
-			<a href="#"  class="event_sort_price" sort="DESC">Price&DoubleDownArrow;</a> -
-			<a href="#"  class="event_sort_price" sort="ASC">Price&DoubleUpArrow;</a>
+			<a href="#" class="event_sort_name" sort="DESC">Name&DoubleDownArrow;</a> -
+			<a href="#" class="event_sort_name" sort="ASC">Name&DoubleUpArrow;</a> -
+			<a href="#" class="event_sort_price" sort="DESC">Price&DoubleDownArrow;</a> -
+			<a href="#" class="event_sort_price" sort="ASC">Price&DoubleUpArrow;</a>
 		</p>
 	</div>
 	<?php if (count($data['list_product']) > 0): ?>
@@ -69,55 +69,58 @@
 								<img src="<?php echo base_url($product['thumb']) ?>" alt=""/>
 
 								<h3><?php echo $product['name'] ?></h3>
-								<?php echo '$' . round($product['price'],2) ?>
+								<?php echo '$' . round($product['price'], 2) ?>
 							</a>
 						</div>
 					<?php
 					endforeach;
 					$num_page = intval($data['num_page']);
-					if($num_page>1):
-					$url = '#?page';
-					$class_name = 'event_page';
-					?>
-					<div class="cl">&nbsp;</div>
-					<div class="page">
-						<a href="#"  class="<?php echo $class_name ?>" id="0">Start</a>
-						<?php
-						$current = 1;
-						if (isset($data['page']))
-						{
-							$current = $data['page'];
-						}
-						$flag = TRUE;
-						for ($i = 1; $i <= $num_page; $i++)
-						{
-							if ($i > ($current - 3) && $i < ($current + 3))
+					if ($num_page > 1):
+						$url = '#?page';
+						$class_name = 'event_page';
+						?>
+						<div class="cl">&nbsp;</div>
+						<div class="page">
+							<a href="#" class="<?php echo $class_name ?>" id="0">Start</a>
+							<?php
+							$current = 1;
+							if (isset($data['page']))
 							{
-								$flag = TRUE;
-								if ($current === $i)
+								$current = $data['page'];
+							}
+							$flag = TRUE;
+							for ($i = 1; $i <= $num_page; $i++)
+							{
+								if ($i > ($current - 3) && $i < ($current + 3))
 								{
-									echo ' <a href="' . $url . '" class="' . $class_name . ' current" id="' . ($i - 1) . '" >' . $i . '</a>';
-								} else
-								{
-									echo ' <a href="' . $url . '" class="' . $class_name . '" id="' . ($i - 1) . '" >' . $i . '</a>';
+									$flag = TRUE;
+									if ($current === $i)
+									{
+										echo ' <a href="' . $url . '" class="' . $class_name . ' current" id="' . ($i - 1) . '" >' . $i . '</a>';
+									}
+									else
+									{
+										echo ' <a href="' . $url . '" class="' . $class_name . '" id="' . ($i - 1) . '" >' . $i . '</a>';
+									}
 								}
-							} else
-							{
-								if ($flag)
+								else
 								{
-									$flag = FALSE;
-									echo " <a>....</a> ";
+									if ($flag)
+									{
+										$flag = FALSE;
+										echo " <a>....</a> ";
+									}
 								}
 							}
-						}
-						?>
-						<a href="#" class="<?php echo $class_name ?>" id="<?php echo $num_page - 1 ?>">End</a>
-					</div>
-					<?php endif;?>
+							?>
+							<a href="#" class="<?php echo $class_name ?>" id="<?php echo $num_page - 1 ?>">End</a>
+						</div>
+					<?php endif; ?>
 				</div>
 			</div>
 		</section>
-	<?php else: echo '<b>No data!</b>';
+	<?php
+	else: echo '<b>No data!</b>';
 	endif;
 	?>
 </div>

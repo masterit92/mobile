@@ -1,6 +1,5 @@
 <?php
-define('slide_show',5);
-define('maker_default',0);
+require_once '../my_config.php';
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT

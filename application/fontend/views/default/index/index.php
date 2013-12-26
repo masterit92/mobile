@@ -17,7 +17,7 @@
 
 							<p>
 								<?php
-								echo substr($product['description'],0,100);
+								echo substr($product['description'], 0, 100);
 								?>....<a
 									href="<?php echo base_url('product/detail?p_id=' . $product['p_id']) ?>">Read
 									More</a>

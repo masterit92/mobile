@@ -98,8 +98,8 @@ class Model_product extends CI_Model {
 			$product = $this->product_selected($selected);
 			if (isset($product[0]['selected']))
 			{
-				$arr_data=array('selected'=>0);
-				$this->update($arr_data,$product[0]['p_id']);
+				$arr_data = array('selected' => 0);
+				$this->update($arr_data, $product[0]['p_id']);
 			}
 		}
 	}

@@ -11,7 +11,7 @@ $product = $data['product'][0];
 	<div class="detail_right">
 		<h1><?php echo strtoupper($product['name']) ?></h1>
 		<hr/>
-		<p>PRICE: <b><?php echo '$' . round($product['price'],2) ?></b></p>
+		<p>PRICE: <b><?php echo '$' . round($product['price'], 2) ?></b></p>
 
 		<p>DESCRIPTION:</p><b><?php echo $product['description'] ?></b>
 
