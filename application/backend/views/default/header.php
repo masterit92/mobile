@@ -1,6 +1,8 @@
 <div class="banner">
 	<div class="banner-logo">
-		<img src="<?php echo base_url("public/backend/images/logo.png") ?>" width="150" height="150"/>
+		<a href="<?php echo base_url('admin') ?>">
+			<img src="<?php echo base_url("public/backend/images/logo.png") ?>" width="150" height="150"/>
+		</a>
 	</div>
 	<div class="banner-top">
 		<img src="<?php echo base_url("public/backend/images/banner.jpg") ?>" width="850" height="110"/>

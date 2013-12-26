@@ -34,7 +34,8 @@ class Product extends My_controller {
 		$product = $this->model_products->product_by_id($p_id);
 		$price_min = $product[0]['price'] - 20;
 		$price_max = $product[0]['price'] + 20;
-		$this->model_products->arr_where = array('price >= ' => $price_min, 'price <= ' => $price_max);
+		$arr_where = array('price >= ' => $price_min, 'price <= ' => $price_max, 'p_id <>' => $p_id);
+		$this->model_products->arr_where = $arr_where;
 		$this->model_products->start = 0;
 		$this->model_products->num_row = 4;
 
@@ -47,6 +48,7 @@ class Product extends My_controller {
 
 	public function product_category()
 	{
+		$this->filter_by=NULL;
 		$c_id = intval($this->input->get('c_id'));
 		$arr_c_id = array($this->input->get('c_id'));
 		$this->model_category->category_child($c_id, $arr_c_id);
@@ -189,6 +191,7 @@ class Product extends My_controller {
 	{
 		if ($this->input->post('btn_search'))
 		{
+			$this->filter_by=NULL;
 			$name = $this->input->post('txt_search');
 			$this->filter_by['search'] = $name;
 			$this->session->set_userdata('filter_by', $this->filter_by);

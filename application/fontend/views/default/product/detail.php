@@ -29,6 +29,7 @@ $product = $data['product'][0];
 	</div>
 	<div class="cl"></div>
 </div>
+<?php if(isset($data['arr_relate']) && count($data['arr_relate'])>0):?>
 <div class="detail">
 	<div class="detail_top">
 		<h3>Product Related:</h3>
@@ -44,7 +45,7 @@ $product = $data['product'][0];
 								<img src="<?php echo base_url($product['thumb']) ?>" alt=""/>
 
 								<h3><?php echo $product['name'] ?></h3>
-								<?php echo '$' . $product['price'] ?>
+								<?php echo '$' . round($product['price'], 2) ?>
 							</a>
 						</div>
 					<?php
@@ -55,3 +56,4 @@ $product = $data['product'][0];
 		</section>
 	</div>
 </div>
+<?php endif;?>
