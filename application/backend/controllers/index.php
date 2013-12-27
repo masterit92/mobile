@@ -11,7 +11,7 @@ class Index extends CI_Controller {
 	public function index()
 	{
 		$flag = FALSE;
-		if ($this->session->userdata("user_infor"))
+		if ($this->session->userdata('user_infor'))
 		{
 			$flag = TRUE;
 		}

@@ -9,7 +9,7 @@ $product = $data['product'][0];
 		<img src="<?php echo base_url($product['thumb']) ?>" alt="No image"/>
 	</div>
 	<div class="detail_right">
-		<h1><?php echo strtoupper($product['name']) ?></h1>
+		<h1><?php echo strtoupper(html_escape($product['name'])) ?></h1>
 		<hr/>
 		<p class="detail_title">PRICE: <b><?php echo '$' . round($product['price'], 2) ?></b></p>
 
@@ -19,7 +19,7 @@ $product = $data['product'][0];
 		<b>
 			<?php
 			$maker = $this->model_maker->maker_by_id($product['m_id']);
-			echo $maker[0]['name'];
+			echo html_escape($maker[0]['name']);
 			?>
 		</b>
 
@@ -44,7 +44,7 @@ $product = $data['product'][0];
 							<a href="<?php echo base_url('product/detail?p_id=' . $product['p_id']) ?>">
 								<img src="<?php echo base_url($product['thumb']) ?>" alt=""/>
 
-								<h3><?php echo $product['name'] ?></h3>
+								<h3><?php echo html_escape($product['name']) ?></h3>
 								<?php echo '$' . round($product['price'], 2) ?>
 							</a>
 						</div>

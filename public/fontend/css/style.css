@@ -77,7 +77,7 @@ header .shell { position: relative; z-index: 40;}
 .services h2 { float: left; font-size: 22px; font-weight: normal; padding-bottom: 15px; padding-left: 3px; color: #3c2323; }
 .services a.all-services { float: right; font-size: 14px; margin-right: 12px; }
 .services .boxes { margin: 0 -1px 0 -3px;  width: 100%; }  
-.services .box { width: 180px; float: left; margin: 5px;}
+.services .box { width: 20%; float: left; margin: 5px;}
 .services .box { padding-left: 10px; }
 
 .services .box a { float: left; background: #fff ; padding: 3px 3px 6px 3px;
@@ -257,9 +257,9 @@ div .detail b{
     margin-left: 10px;
 }
 div .sort_by{
-    margin: 0 auto;
+    margin-left:70px;
     background: #1b1815;
-    width: 800px;
+    width: 850px;
     min-height: 25px;
     border-radius:5px;
     margin-top: 5px;

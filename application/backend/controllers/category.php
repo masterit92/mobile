@@ -12,7 +12,7 @@ class Category extends My_controller {
 	{
 		$arr_cat = $this->model_category->all_category();
 		$this->response['data']['list_category'] = $arr_cat;
-		$this->response['title'] = "Category";
+		$this->response['title'] = 'Category';
 		$this->response['template'] = 'default/category/index';
 		$this->load->view("default/layout", $this->response);
 	}
@@ -53,7 +53,7 @@ class Category extends My_controller {
 		$this->response['data']['category'] = $this->model_category->category_by_id($c_id);
 		$arr_cat = $this->model_category->all_category();
 		$this->response['data']['list_category'] = $arr_cat;
-		$this->response['title'] = "Edit Category";
+		$this->response['title'] = 'Edit Category';
 		$this->response['template'] = 'default/category/form';
 		$this->load->view("default/layout", $this->response);
 	}
@@ -62,7 +62,7 @@ class Category extends My_controller {
 	{
 		$arr_cat = $this->model_category->all_category();
 		$this->response['data']['list_category'] = $arr_cat;
-		$this->response['title'] = "Create Category";
+		$this->response['title'] = 'Create Category';
 		$this->response['template'] = 'default/category/form';
 		$this->load->view("default/layout", $this->response);
 	}

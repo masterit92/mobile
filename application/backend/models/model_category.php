@@ -36,12 +36,10 @@ class Model_category extends CI_Model {
 	public function delete($c_id)
 	{
 		$this->delete_category_product($c_id);
-		$arr_chirden = $this->chirden_category($c_id);
-		foreach ($arr_chirden as $category)
-		{
-			$arr_data = array('parent_id' => 0, 'status' => 0);
-			$this->update($arr_data, $category['c_id']);
-		}
+		$category= $this->category_by_id($c_id);
+		$arr_data = array('parent_id' => $category[0]['parent_id']);
+		$this->db->where('parent_id', $c_id);
+		$this->db->update($this->table_name, $arr_data);
 		$this->db->where('c_id', $c_id);
 		$this->db->delete($this->table_name);
 	}

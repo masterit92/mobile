@@ -12,7 +12,7 @@ class Role extends My_controller {
 	public function index()
 	{
 		$this->response['data']['list_role'] = $this->model_role->all_role();
-		$this->response['title'] = "Role";
+		$this->response['title'] = 'Role';
 		$this->response['template'] = 'default/role/index';
 		$this->load->view("default/layout", $this->response);
 	}
@@ -54,16 +54,16 @@ class Role extends My_controller {
 			$role_id = intval($this->input->get('role_id'));
 			$this->response['data']['role'] = $this->model_role->role_by_id($role_id);
 		}
-		$this->response['title'] = "Edit Users";
+		$this->response['title'] = 'Edit Users';
 		$this->response['template'] = 'default/role/form';
-		$this->load->view("default/layout", $this->response);
+		$this->load->view('default/layout', $this->response);
 	}
 
 	public function create()
 	{
-		$this->response['title'] = "Create Users";
+		$this->response['title'] = 'Create Users';
 		$this->response['template'] = 'default/role/form';
-		$this->load->view("default/layout", $this->response);
+		$this->load->view('default/layout', $this->response);
 	}
 
 	public function save()

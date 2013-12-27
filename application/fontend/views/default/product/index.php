@@ -11,7 +11,7 @@
 			foreach ($fillter as $key => $value):
 				if (strcmp($key, 'search') == 0)
 				{
-					echo '- <b>Search name</b>: ' . $value . '--<a href="#"  class="event_del_filter" filter="search">Delete</a><br/>';
+					echo '- <b>Search name</b>: ' . html_escape($value) . '--<a href="#"  class="event_del_filter" filter="search">Delete</a><br/>';
 				}
 				if (strcmp($key, 'price_min') == 0)
 				{
@@ -23,7 +23,7 @@
 				}
 				if (strcmp($key, 'sort_name') == 0)
 				{
-					echo '- <b>Sort Name</b>: ' . $value . '--<a href="#" class="event_del_filter" filter="sort_name">Delete</a><br/>';
+					echo '- <b>Sort Name</b>: ' . html_escape($value) . '--<a href="#" class="event_del_filter" filter="sort_name">Delete</a><br/>';
 				}
 				if (strcmp($key, 'sort_price') == 0)
 				{
@@ -40,7 +40,7 @@
 					$arr_maker = $this->model_maker->maker_by_id($value);
 					foreach ($arr_maker as $maker)
 					{
-						echo $maker['name'] . '. ';
+						echo html_escape($maker['name']) . '. ';
 					}
 					echo '--<a href="#" class="event_del_filter" filter="arr_m_id">Delete</a><br/>';
 				}
@@ -68,7 +68,7 @@
 							<a href="<?php echo base_url('product/detail?p_id=' . $product['p_id']) ?>">
 								<img src="<?php echo base_url($product['thumb']) ?>" alt=""/>
 
-								<h3><?php echo $product['name'] ?></h3>
+								<h3><?php echo html_escape($product['name']) ?></h3>
 								<?php echo '$' . round($product['price'], 2) ?>
 							</a>
 						</div>

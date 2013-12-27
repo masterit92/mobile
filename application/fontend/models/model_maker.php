@@ -2,7 +2,7 @@
 
 class Model_maker extends CI_Model {
 
-	private $table_name = 'makers';
+	private $table_name = 'maker';
 
 	public function __construct()
 	{

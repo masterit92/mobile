@@ -25,9 +25,9 @@
 		?>
 		<tr>
 			<td><?php echo $product['p_id'] ?></td>
-			<td><?php echo $product['name'] ?></td>
+			<td><?php echo html_escape($product['name']) ?></td>
 			<td><img src="<?php echo base_url($product['thumb']) ?>" width="150" height="150"/></td>
-			<td><?php echo $maker[0]['name'] ?></td>
+			<td><?php echo html_escape($maker[0]['name']) ?></td>
 			<td><?php echo '$' . round($product['price'], 2) ?></td>
 			<td><?php echo $product['quantity'] ?></td>
 			<td>

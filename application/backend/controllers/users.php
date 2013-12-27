@@ -12,7 +12,7 @@ class Users extends My_controller {
 	public function index()
 	{
 		$this->response['data']['list_user'] = $this->model_users->all_user();
-		$this->response['title'] = "Users";
+		$this->response['title'] = 'Users';
 		$this->response['template'] = 'default/users/index';
 		$this->load->view("default/layout", $this->response);
 	}
@@ -51,7 +51,6 @@ class Users extends My_controller {
 			$user_id = intval($this->input->get('user_id'));
 			if ($user_id != $this->session->userdata('user_infor')->user_id)
 			{
-				$arr_permissions = $this->model_users->user_permissions($user_id);
 				$this->model_users->delete($user_id);
 			}
 			else
@@ -64,7 +63,7 @@ class Users extends My_controller {
 
 	public function create()
 	{
-		$this->response['title'] = "Create Users";
+		$this->response['title'] = 'Create Users';
 		$this->response['template'] = 'default/users/form_create';
 		$this->load->view("default/layout", $this->response);
 	}
@@ -73,16 +72,16 @@ class Users extends My_controller {
 	{
 		$user_id = intval($this->input->get('user_id'));
 		$this->response['data']['user'] = $this->model_users->user_by_id($user_id);
-		$this->response['title'] = "Profile Users";
+		$this->response['title'] = 'Profile Users';
 		$this->response['template'] = 'default/users/form_profile';
-		$this->load->view("default/layout", $this->response);
+		$this->load->view('default/layout', $this->response);
 	}
 
 	public function password()
 	{
-		$this->response['title'] = "Changer password";
+		$this->response['title'] = 'Changer password';
 		$this->response['template'] = 'default/users/form_password';
-		$this->load->view("default/layout", $this->response);
+		$this->load->view('default/layout', $this->response);
 	}
 
 	public function save()
@@ -136,9 +135,9 @@ class Users extends My_controller {
 		$user_id = intval($this->input->get('user_id'));
 		$this->response['data']['list_permissions'] = $this->model_users->user_permissions($user_id);
 		$this->response['data']['list_role'] = $this->model_role->all_role(TRUE);
-		$this->response['title'] = "Permissions";
+		$this->response['title'] = 'Permissions';
 		$this->response['template'] = 'default/users/permissions';
-		$this->load->view("default/layout", $this->response);
+		$this->load->view('default/layout', $this->response);
 	}
 
 	public function save_permissions()

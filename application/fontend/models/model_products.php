@@ -2,7 +2,7 @@
 
 class Model_products extends CI_Model {
 
-	protected $table_name = 'products';
+	protected $table_name = 'product';
 	public $start = 0;
 	public $num_row = 6;
 	public $num_page;
@@ -99,7 +99,7 @@ class Model_products extends CI_Model {
 		if (count($arr_product) > 0)
 		{
 			$arr = implode(',', $arr_product);
-			$sql_query = "SELECT DISTINCT `m_id` FROM `products` WHERE `p_id` IN ($arr)";
+			$sql_query = "SELECT DISTINCT `m_id` FROM `product` WHERE `p_id` IN ($arr)";
 			$query = $this->db->query($sql_query);
 			$arr_maker_id = array();
 			foreach ($query->result_array() as $pro)

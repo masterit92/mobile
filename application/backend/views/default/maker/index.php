@@ -13,7 +13,7 @@
 		?>
 		<tr>
 			<td><?php echo $maker['m_id'] ?></td>
-			<td><?php echo $maker['name'] ?></td>
+			<td><?php echo html_escape($maker['name']) ?></td>
 			<td>
 				<a href="<?php echo base_url('admin/maker/edit?m_id=' . $maker['m_id']) ?>">Edit</a>
 				<a href="<?php echo base_url('admin/maker/delete?m_id=' . $maker['m_id']) ?>" class="event_delete">Delete</a>

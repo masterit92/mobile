@@ -129,8 +129,8 @@ class Product extends My_controller {
 		if ($this->input->post('price_rang'))
 		{
 			$range = explode(' - ', $this->input->post('price_rang'));
-			$min = ltrim($range[0], "$");
-			$max = ltrim($range[1], "$");
+			$min = ltrim($range[0], '$');
+			$max = ltrim($range[1], '$');
 			$this->filter_by['price_min'] = $min;
 			$this->filter_by['price_max'] = $max;
 			$this->session->set_userdata('filter_by', $this->filter_by);
@@ -200,9 +200,9 @@ class Product extends My_controller {
 			$list_product = $this->model_products->limit_product();
 			$this->response['data']['list_product'] = $list_product;
 			$this->response['data']['num_page'] = ceil($this->model_products->get_num_page() / $this->model_products->num_row);
-			$this->response['title'] = "Product";
+			$this->response['title'] = 'Product';
 			$this->response['template'] = 'default/product/index';
-			$this->load->view("default/layout", $this->response);
+			$this->load->view('default/layout', $this->response);
 		}
 		else
 		{

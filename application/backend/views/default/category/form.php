@@ -26,24 +26,32 @@ if (isset($data['category']))
 						<?php
 						$arr_cat = $data['list_category'];
 
-						function show_select($arr_cat, $parent_id = 0, $text = '&triangleright;')
+						function show_select($arr_cat, $parent_c, $parent_id = 0, $text = '&triangleright;')
 						{
 							foreach ($arr_cat as $cat)
 							{
 								if ($cat['parent_id'] == $parent_id):
 									echo '<option value="' . $cat['c_id'] . '"';
-									if (isset($_GET['c_id']) && $cat['c_id'] == $_GET['c_id'])
+									if (isset($_GET['c_id']))
 									{
-										echo 'disabled';
+										$c_id = $_GET['c_id'];
+										if ($cat['c_id'] == $c_id)
+										{
+											echo ' disabled ';
+										}
+										if ($parent_c == $cat['c_id'])
+										{
+											echo ' selected ';
+										}
 									}
 									echo '>';
 									echo $text . $cat['name'] . '</option>';
-									show_select($arr_cat, $cat['c_id'], $text . '&triangleright;&triangleright;&triangleright;');
+									show_select($arr_cat,$parent_c, $cat['c_id'], $text . '&triangleright;&triangleright;&triangleright;');
 								endif;
 							}
 						}
 
-						show_select($arr_cat);
+						show_select($arr_cat, $category['parent_id']);
 						?>
 					</select>
 				</li>

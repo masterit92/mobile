@@ -40,7 +40,7 @@
 							if ($parent_id == 0)
 								echo "<div class='subs_parent'>";
 							if ($cat['parent_id'] == $parent_id):
-								echo '<a href="' . base_url('product/product_category?c_id=' . $cat['c_id']) . '">' . $text . $cat['name'] . '</a><br/>';
+								echo '<a href="' . base_url('product/product_category?c_id=' . $cat['c_id']) . '">' . $text . html_escape($cat['name']) . '</a><br/>';
 								show_div_category($arr_cat, $cat['c_id'], $text . '&triangleright;&triangleright;');
 							endif;
 							if ($parent_id == 0)

@@ -30,6 +30,12 @@ if (isset($data['product_category']))
 						   value="<?php echo isset($product) ? $product['name'] : '' ?>" placeholder="Product Name"
 						   class="required"/>
 				</li>
+				<?php if (isset($product)): ?>
+					<li>
+						<label for="Product name" >&nbsp;<span>*</span></label>
+						<img src="<?php echo base_url($product['thumb']) ?>" width="100" height="100"/><br/>
+					</li>
+				<?php endif; ?>
 				<li><label for="Thumb" class="required">Thumb<span>*</span></label>
 					<input type="file" name="thumb"/>
 				</li>
@@ -40,7 +46,7 @@ if (isset($data['product_category']))
 				</li>
 				<li><label for="Description" class="required">Description<span>*</span></label><br/>
 					<textarea name="description" id="description"
-							  value="" required><?php echo isset($product) ? $product['description'] : ''?></textarea>
+							  value="" required><?php echo isset($product) ? $product['description'] : '' ?></textarea>
 					<script type="text/javascript">CKEDITOR.replace('description');</script>
 
 				</li>

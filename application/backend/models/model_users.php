@@ -2,7 +2,7 @@
 
 class Model_users extends CI_Model {
 
-	protected $table_name = 'users';
+	protected $table_name = 'user';
 
 	public function __construct()
 	{
@@ -41,11 +41,7 @@ class Model_users extends CI_Model {
 
 	public function delete($user_id)
 	{
-		$arr_premisstion = $this->user_permissions($user_id);
-		foreach ($arr_premisstion as $value)
-		{
-			$this->delete_permissions($user_id, $value['role_id']);
-		}
+		$this->delete_permissions($user_id);
 		$this->db->where('user_id', $user_id);
 		$this->db->delete($this->table_name);
 	}
@@ -82,10 +78,9 @@ class Model_users extends CI_Model {
 		$this->db->insert('role_and_user', $arr_data);
 	}
 
-	public function delete_permissions($user_id, $role_id)
+	public function delete_permissions($user_id)
 	{
 		$this->db->where('user_id', $user_id);
-		$this->db->where('role_id', $role_id);
 		$this->db->delete('role_and_user');
 	}
 

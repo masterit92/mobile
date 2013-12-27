@@ -19,7 +19,7 @@
 		{
 			?>
 			<tr>
-				<td><?php echo $role['name'] ?></td>
+				<td><?php echo html_escape($role['name']) ?></td>
 				<td>
 					<input type="checkbox" name="ckb_role[]"
 						   value="<?php echo $role['role_id'] ?>" <?php echo in_array($role['role_id'], $arr_role) ? 'checked' : '' ?>/>

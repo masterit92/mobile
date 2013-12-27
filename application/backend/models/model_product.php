@@ -2,7 +2,7 @@
 
 class Model_product extends CI_Model {
 
-	protected $table_name = 'products';
+	protected $table_name = 'product';
 
 	public function __construct()
 	{
@@ -51,10 +51,9 @@ class Model_product extends CI_Model {
 		$this->db->delete($this->table_name);
 	}
 
-	public function delete_product_category($p_id, $c_id)
+	public function delete_product_category($p_id)
 	{
 		$this->db->where('p_id', $p_id);
-		$this->db->where('c_id', $c_id);
 		$this->db->delete('cat_and_pro');
 	}
 

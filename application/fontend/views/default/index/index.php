@@ -13,7 +13,7 @@
 						<img src="<?php echo base_url($product['thumb']) ?>" alt=""/>
 
 						<div class="slide-cnt">
-							<h2><?php echo $product['name'] ?></h2>
+							<h2><?php echo html_escape($product['name']) ?></h2>
 								<?php
 								echo substr($product['description'], 0, 100);
 								?>....<a
@@ -44,7 +44,7 @@
 					<a href="<?php echo base_url('product/detail?p_id=' . $new_product['p_id']) ?>">
 						<img src="<?php echo base_url($new_product['thumb']) ?>" alt=""/>
 
-						<h3><?php echo $new_product['name'] ?></h3>
+						<h3><?php echo html_escape($new_product['name']) ?></h3>
 					</a>
 				</div>
 			<?php

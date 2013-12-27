@@ -1,3 +1,3 @@
 <?php
-define('slide_show',5);
-define('maker_default',0);
+define('SLIDE_SHOW', 5);
+define('MAKER_DEFAULT', 0);

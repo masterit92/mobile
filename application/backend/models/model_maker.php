@@ -2,7 +2,7 @@
 
 class Model_maker extends CI_Model {
 
-	private $table_name = 'makers';
+	private $table_name = 'maker';
 
 	public function __construct()
 	{
@@ -31,14 +31,14 @@ class Model_maker extends CI_Model {
 	public function update($arr_data, $m_id)
 	{
 		$this->db->where('m_id', $m_id);
-		$this->db->where('m_id <> ', maker_default);
+		$this->db->where('m_id <> ', MAKER_DEFAULT);
 		$this->db->update($this->table_name, $arr_data);
 	}
 
 	public function delete($m_id)
 	{
 		$this->db->where('m_id', $m_id);
-		$this->db->where('m_id <> ', maker_default);
+		$this->db->where('m_id <> ', MAKER_DEFAULT);
 		$this->db->delete($this->table_name);
 	}
 

@@ -13,7 +13,7 @@ class Maker extends My_controller {
 	{
 		$arr_maker = $this->model_maker->all_maker();
 		$this->response['data']['list_maker'] = $arr_maker;
-		$this->response['title'] = "Maker";
+		$this->response['title'] = 'Maker';
 		$this->response['template'] = 'default/maker/index';
 		$this->load->view("default/layout", $this->response);
 	}
@@ -21,12 +21,12 @@ class Maker extends My_controller {
 	public function delete()
 	{
 		$m_id = intval($this->input->get('m_id'));
-		if ($m_id !== maker_default)
+		if ($m_id !== MAKER_DEFAULT)
 		{
 			$arr_pro = $this->model_maker->product_maker($m_id);
 			foreach ($arr_pro as $pro)
 			{
-				$arr_data = array('m_id' => maker_default);
+				$arr_data = array('m_id' => MAKER_DEFAULT);
 				$this->model_product->update($arr_data, $pro['p_id']);
 			}
 			$this->model_maker->delete($m_id);
@@ -42,10 +42,10 @@ class Maker extends My_controller {
 	{
 		$m_id = intval($this->input->get('m_id'));
 		$maker = $this->model_maker->maker_by_id($m_id);
-		if (isset($maker[0]['m_id']) && $maker[0]['m_id'] != maker_default)
+		if (isset($maker[0]['m_id']) && $maker[0]['m_id'] != MAKER_DEFAULT)
 		{
 			$this->response['data']['maker'] = $maker;
-			$this->response['title'] = "Maker";
+			$this->response['title'] = 'Maker';
 			$this->response['template'] = 'default/maker/form';
 			$this->load->view("default/layout", $this->response);
 		}
@@ -58,7 +58,7 @@ class Maker extends My_controller {
 
 	public function create()
 	{
-		$this->response['title'] = "Maker";
+		$this->response['title'] = 'Maker';
 		$this->response['template'] = 'default/maker/form';
 		$this->load->view("default/layout", $this->response);
 	}

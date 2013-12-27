@@ -39,11 +39,7 @@ class Model_role extends CI_Model {
 
 	public function delete($role_id)
 	{
-		$arr = $this->role_user($role_id);
-		foreach ($arr as $value)
-		{
-			$this->delete_role_user($value['user_id'], $role_id);
-		}
+		$this->delete_role_user($role_id);
 		$this->db->where('role_id', $role_id);
 		$this->db->delete($this->table_name);
 	}
@@ -66,9 +62,8 @@ class Model_role extends CI_Model {
 		return $query->result_array();
 	}
 
-	public function delete_role_user($user_id, $role_id)
+	public function delete_role_user($role_id)
 	{
-		$this->db->where('user_id', $user_id);
 		$this->db->where('role_id', $role_id);
 		$this->db->delete('role_and_user');
 	}

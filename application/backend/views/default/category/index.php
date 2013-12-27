@@ -15,7 +15,7 @@
 				foreach ($arr_cat as $cat)
 				{
 					if ($cat['parent_id'] == $parent_id):
-						echo $text . $cat['name'];
+						echo $text . html_escape($cat['name']);
 						?>
 						<a href="<?php echo base_url('admin/category/set_status?c_id=' . $cat['c_id'] . '&status=' . $cat['status']) ?>"><?php echo $cat['status'] == 1 ? 'Active' : 'No active' ?></a>&nbsp;&nbsp;
 						<a href="<?php echo base_url('admin/category/edit?c_id=' . $cat['c_id']) ?>">Edit</a>&nbsp;&nbsp;
