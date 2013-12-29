@@ -163,7 +163,7 @@ class Product extends My_controller {
 				return $url_img;
 			}
 		}
-		return NULL;
+		return 'public/default_img.gif';
 	}
 
 }

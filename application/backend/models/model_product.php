@@ -46,7 +46,7 @@ class Model_product extends CI_Model {
 
 	public function delete($p_id)
 	{
-		$this->db->delete_product_category($p_id);
+		$this->delete_product_category($p_id);
 		$this->db->where('p_id', $p_id);
 		$this->db->delete($this->table_name);
 	}
