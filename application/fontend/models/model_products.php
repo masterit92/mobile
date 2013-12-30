@@ -81,9 +81,9 @@ class Model_products extends CI_Model {
 		return $query->result_array();
 	}
 
-	public function product_category($c_id)
+	public function product_category($arr_c_id)
 	{
-		$this->db->where('c_id', $c_id);
+		$this->db->where_in('c_id', $arr_c_id);
 		$query = $this->db->get('cat_and_pro');
 		$arr_pro_id = array();
 		foreach ($query->result_array() as $pro_id)
@@ -93,14 +93,18 @@ class Model_products extends CI_Model {
 		return $arr_pro_id;
 	}
 
-	public function maker_product($c_id)
+	public function maker_product($arr_c_id)
 	{
-		$arr_product = $this->product_category($c_id);
+		$arr_product = $this->product_category($arr_c_id);
 		if (count($arr_product) > 0)
 		{
 			$arr = implode(',', $arr_product);
-			$sql_query = "SELECT DISTINCT `m_id` FROM `product` WHERE `p_id` IN ($arr)";
-			$query = $this->db->query($sql_query);
+			$arr_c_id = implode(',', $arr_c_id);
+			$sql = "SELECT DISTINCT `m_id` FROM `product`
+						JOIN `cat_and_pro` ON `product`.`p_id`= `cat_and_pro`.`p_id`
+						JOIN `category` ON `cat_and_pro`.`c_id`=`category`.`c_id`
+						WHERE `product`.`p_id` IN($arr) AND `category`.`c_id` IN($arr_c_id)";
+			$query = $this->db->query($sql);
 			$arr_maker_id = array();
 			foreach ($query->result_array() as $pro)
 			{
@@ -121,5 +125,40 @@ class Model_products extends CI_Model {
 			$arr_pro_id[] = $pro_id['p_id'];
 		}
 		return $arr_pro_id;
+	}
+
+	public function filter_by($filter_by)
+	{
+		$arr_where_in = array();
+		$arr_where = array();
+		if (isset($filter_by['arr_m_id']) && $filter_by['arr_m_id'] !== 'NULL')
+		{
+			$arr_where_in['m_id'] = $filter_by['arr_m_id'];
+		}
+		if (isset($filter_by['arr_c_id']))
+		{
+			$arr_c_id = $filter_by['arr_c_id'];
+			$arr_pro_id = $this->product_in_category($arr_c_id);;
+			$arr_where_in['p_id'] = $arr_pro_id;
+		}
+		if (isset($filter_by['sort_name']))
+		{
+			$this->arr_order_by['name'] = $filter_by['sort_name'];
+		}
+		else if (isset($filter_by['sort_price']))
+		{
+			$this->arr_order_by['price'] = $filter_by['sort_price'];
+		}
+		if (isset($filter_by['price_min']) && isset($filter_by['price_max']))
+		{
+			$arr_where['price >= '] = floatval($filter_by['price_min']);
+			$arr_where['price <= '] = floatval($filter_by['price_max']);
+		}
+		if (isset($filter_by['search']))
+		{
+			$this->arr_like['name'] = $filter_by['search'];
+		}
+		$this->arr_where = $arr_where;
+		$this->arr_where_in = $arr_where_in;
 	}
 }

@@ -85,7 +85,7 @@ if (isset($data['product_category']))
 					<select name="selected">
 						<option value="0">No show</option>
 						<?php
-						for ($i = 1; $i <= slide_show; $i++)
+						for ($i = 1; $i <= SLIDE_SHOW; $i++)
 						{
 							if (isset($product) && $product['selected'] == $i)
 							{

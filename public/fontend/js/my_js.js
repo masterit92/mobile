@@ -1,12 +1,12 @@
 $(function () {
     $('.event_sort_name').click(function () {
         var sort_name = $(this).attr('sort');
-        var url = url_root + 'product/sort';
+        var url = url_root + 'product/filter';
         $('#container').load(url, {'sort_name': sort_name});
     });
     $('.event_sort_price').click(function () {
         var sort_price = $(this).attr('sort');
-        var url = url_root +'product/sort';
+        var url = url_root +'product/filter';
         $('#container').load(url, {'sort_price': sort_price});
     });
     $('.event_page').click(function () {
@@ -17,19 +17,19 @@ $(function () {
     });
     $('.event_del_filter').click(function () {
         var filter = $(this).attr('filter');
-        var url =  url_root + 'product/delete_filter';
+        var url =  url_root + 'product/filter';
         $('#container').load(url, {'filter': filter});
     });
 
     $("#slider-range").slider({
         change: function (event, ui) {
             var price_rang = $("#amount").val();
-            var url = url_root +'product/price_rang';
+            var url = url_root +'product/filter';
             $('#container').load(url, {'price_rang': price_rang});
         }});
     $('.event_makers').click(function () {
         var m_id_check = get_arr_check(arr_m_id);
-        var url =url_root +'product/makers';
+        var url =url_root +'product/filter';
         $('#container').load(url, {'arr_m_id': m_id_check});
     });
 });

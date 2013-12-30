@@ -110,7 +110,12 @@ class Product extends My_controller {
 					if ($thumb !== NULL)
 					{
 						$product = $this->model_product->product_by_id($p_id);
-						unlink($product['thumb']);
+						$arr_data['thumb'] = $product['thumb'];
+						if (strcmp($thumb, $product['thumb']) != 0)
+						{
+							$arr_data['thumb'] = $thumb;
+							unlink($product['thumb']);
+						}
 					}
 					$this->model_product->update($arr_data, $p_id);
 					$arr_p_c = $this->model_product->product_category($p_id);

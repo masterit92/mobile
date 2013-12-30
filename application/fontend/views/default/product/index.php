@@ -4,15 +4,11 @@
 		Product
 		<?php
 		if ($this->session->userdata('filter_by')):
-			$fillter = $this->session->userdata('filter_by');
+			$filter = $this->session->userdata('filter_by');
 			?>
 			<br/><b>Filter By:</b><br/>
 			<?php
-			foreach ($fillter as $key => $value):
-				if (strcmp($key, 'search') == 0)
-				{
-					echo '- <b>Search name</b>: ' . html_escape($value) . '--<a href="#"  class="event_del_filter" filter="search">Delete</a><br/>';
-				}
+			foreach ($filter as $key => $value):
 				if (strcmp($key, 'price_min') == 0)
 				{
 					echo '- <b>Min Price</b>: ' . $value . '--<a href="#" class="event_del_filter" filter="price_min">Delete</a><br/>';
@@ -28,11 +24,6 @@
 				if (strcmp($key, 'sort_price') == 0)
 				{
 					echo '- <b>Sort Price</b>: ' . $value . '--<a href="#" class="event_del_filter" filter="sort_price">Delete</a><br/>';
-				}
-				if (strcmp($key, 'c_id') == 0)
-				{
-					$category = $this->model_category->category_by_id($value);
-					echo '- <b>Category</b>: ' . $category[0]['name'] . '--<a href="#" class="event_del_filter" filter="c_id">Delete</a><br/>';
 				}
 				if (strcmp($key, 'arr_m_id') == 0 && $value !== 'NULL')
 				{
