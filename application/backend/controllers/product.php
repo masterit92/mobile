@@ -99,7 +99,6 @@ class Product extends My_controller {
 			$arr_data = array('name' => $name, 'price' => $price, 'description' => $description, 'quantity' => $quantity, 'm_id' => $m_id, 'selected' => $selected);
 			if (!empty($name) && intval($quantity))
 			{
-				$this->model_product->set_selected($selected);
 				if ($thumb !== NULL)
 				{
 					$arr_data['thumb'] = $thumb;
@@ -110,25 +109,25 @@ class Product extends My_controller {
 					if ($thumb !== NULL)
 					{
 						$product = $this->model_product->product_by_id($p_id);
-						$arr_data['thumb'] = $product['thumb'];
-						if (strcmp($thumb, $product['thumb']) != 0)
+						$arr_data['thumb'] = $product[0]['thumb'];
+						if (! empty($_FILES['thumb']['name']))
 						{
 							$arr_data['thumb'] = $thumb;
-							unlink($product['thumb']);
+							unlink($product[0]['thumb']);
 						}
 					}
 					$this->model_product->update($arr_data, $p_id);
 					$arr_p_c = $this->model_product->product_category($p_id);
 					foreach ($arr_p_c as $value)
 					{
-						if (!in_array($value['c_id'], $arr_c_id))
+						if (!in_array($value, $arr_c_id))
 						{
-							$this->model_product->delete_product_category($p_id, $value['c_id']);
+							$this->model_product->delete_product_category($p_id, $value);
 						}
 					}
 					foreach ($arr_c_id as $c_id)
 					{
-						if ($this->model_product->check_product_category($p_id, $c_id))
+						if (!in_array($c_id,$arr_p_c))
 						{
 							$data_c_p = array('p_id' => $p_id, 'c_id' => $c_id);
 							$this->model_product->insert_product_category($data_c_p);

@@ -105,7 +105,7 @@ class Users extends My_controller {
 						$this->model_users->update($arr_data, $user_id);
 					} else
 					{
-						$this->session->set_flashdata('error', 'Email exists!');
+						$this->session->set_flashdata('error', 'Form error!');
 					}
 				}
 			} else
@@ -116,7 +116,7 @@ class Users extends My_controller {
 					$this->model_users->insert($arr_data);
 				} else
 				{
-					$this->session->set_flashdata('error', 'Email exists!');
+					$this->session->set_flashdata('error', 'Form error!');
 				}
 			}
 			redirect('admin/users');

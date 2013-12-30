@@ -19,9 +19,13 @@ class Product extends My_controller {
 
 	public function index()
 	{
-		$this->session->unset_userdata('filter_by');
-		$list_product = $this->model_products->limit_product();
+		$this->filter_by = NULL;
+		$min_max_price = array();
+		$list_product = $this->model_products->limit_product($min_max_price);
 		$this->response['data']['list_product'] = $list_product;
+		$this->response['data']['min_max_price'] = $min_max_price;
+		$this->filter_by['min_max_price'] = $min_max_price;
+		$this->session->set_userdata('filter_by', $this->filter_by);
 		$this->response['data']['num_page'] = ceil($this->model_products->get_num_page() / $this->model_products->num_row);
 		$this->response['title'] = "Product";
 		$this->response['template'] = 'default/product/index';
@@ -48,7 +52,7 @@ class Product extends My_controller {
 
 	public function product_category()
 	{
-		$this->filter_by=NULL;
+		$this->filter_by = NULL;
 		$c_id = intval($this->input->get('c_id'));
 		$arr_c_id = array($this->input->get('c_id'));
 		$this->model_category->category_child($c_id, $arr_c_id);
@@ -61,13 +65,17 @@ class Product extends My_controller {
 		{
 			$arr_where_in = array('p_id' => $arr_pro_id);
 			$this->model_products->arr_where_in = $arr_where_in;
-			$this->response['data']['list_product'] = $this->model_products->limit_product();
+			$min_max_price = array();
+			$this->response['data']['list_product'] = $this->model_products->limit_product($min_max_price);
+			$this->response['data']['min_max_price'] = $min_max_price;
+			$this->filter_by['min_max_price'] = $min_max_price;
 			$this->response['data']['num_page'] = ceil($this->model_products->get_num_page() / $this->model_products->num_row);
 		}
 		else
 		{
 			$this->response['data']['list_product'] = NULL;
 		}
+		$this->session->set_userdata('filter_by', $this->filter_by);
 		$this->maker_category($arr_c_id);
 		$this->response['title'] = "Product";
 		$this->response['template'] = 'default/product/index';
@@ -87,14 +95,25 @@ class Product extends My_controller {
 			$page = intval($this->input->post('page')) - 1;
 			$this->model_products->start = intval($this->model_products->num_row) * $page;
 		}
-		$this->response['data']['list_product'] = $this->model_products->limit_product();
+		$min_max_price = array();
+		$action = TRUE;
+		if ($this->input->post('price_rang'))
+		{
+			$action = FALSE;
+		}
+		$this->response['data']['list_product'] = $this->model_products->limit_product($min_max_price, $action);
+		if (!$action)
+		{
+			$min_max_price = $this->filter_by['min_max_price'];
+		}
+		$this->response['data']['min_max_price'] = $min_max_price;
 		$this->response['data']['num_page'] = ceil($this->model_products->get_num_page() / $this->model_products->num_row);
 		$this->response['data']['page'] = $page + 1;
 		$this->response['title'] = "Product";
 		$this->load->view("default/product/index", $this->response);
 	}
 
-	protected  function price_rang()
+	protected function price_rang()
 	{
 		if ($this->input->post('price_rang'))
 		{
@@ -107,7 +126,7 @@ class Product extends My_controller {
 		}
 	}
 
-	protected  function makers()
+	protected function makers()
 	{
 		if ($this->input->post('arr_m_id'))
 		{
@@ -128,28 +147,20 @@ class Product extends My_controller {
 		}
 	}
 
-	protected  function sort()
+	protected function sort()
 	{
 		if ($this->input->post('sort_name'))
 		{
 			$sort_name = $this->input->post('sort_name');
 			$this->filter_by['sort_name'] = $sort_name;
+			unset($this->filter_by['sort_price']);
 			$this->session->set_userdata('filter_by', $this->filter_by);
 		}
-		else
-		{
-			unset($this->filter_by['sort_name']);
-			$this->session->set_userdata('filter_by', $this->filter_by);
-		}
-		if ($this->input->post('sort_price'))
+		else if ($this->input->post('sort_price'))
 		{
 			$sort_price = $this->input->post('sort_price');
 			$this->filter_by['sort_price'] = $sort_price;
-			$this->session->set_userdata('filter_by', $this->filter_by);
-		}
-		else
-		{
-			unset($this->filter_by['sort_price']);
+			unset($this->filter_by['sort_name']);
 			$this->session->set_userdata('filter_by', $this->filter_by);
 		}
 	}
@@ -158,14 +169,18 @@ class Product extends My_controller {
 	{
 		if ($this->input->post('btn_search'))
 		{
-			$this->filter_by=NULL;
+			$this->filter_by = NULL;
 			$name = $this->input->post('txt_search');
 			$this->filter_by['search'] = $name;
-			$this->session->set_userdata('filter_by', $this->filter_by);
+
 			$arr_like = array('name' => $name);
 			$this->model_products->arr_like = $arr_like;
-			$list_product = $this->model_products->limit_product();
+			$min_max_price = array();
+			$list_product = $this->model_products->limit_product($min_max_price);
 			$this->response['data']['list_product'] = $list_product;
+			$this->response['data']['min_max_price'] = $min_max_price;
+			$this->filter_by['min_max_price']= $min_max_price;
+			$this->session->set_userdata('filter_by', $this->filter_by);
 			$this->response['data']['num_page'] = ceil($this->model_products->get_num_page() / $this->model_products->num_row);
 			$this->response['title'] = 'Product';
 			$this->response['template'] = 'default/product/index';
@@ -177,7 +192,7 @@ class Product extends My_controller {
 		}
 	}
 
-	protected  function delete_filter()
+	protected function delete_filter()
 	{
 		if ($this->input->post('filter'))
 		{

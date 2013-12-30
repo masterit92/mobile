@@ -44,6 +44,11 @@ class Model_product extends CI_Model {
 		$this->db->update($this->table_name, $arr_data);
 	}
 
+	public function update_maker($arr_data, $m_id)
+	{
+		$this->db->where('m_id', $m_id);
+		$this->db->update($this->table_name, $arr_data);
+	}
 	public function delete($p_id)
 	{
 		$this->delete_product_category($p_id);
@@ -68,19 +73,12 @@ class Model_product extends CI_Model {
 	{
 		$this->db->where('p_id', $p_id);
 		$query = $this->db->get('cat_and_pro');
-		return $query->result_array();
-	}
-
-	public function check_product_category($p_id, $c_id)
-	{
-		$this->db->where('p_id', $p_id);
-		$this->db->where('c_id', $c_id);
-		$query = $this->db->get('cat_and_pro');
-		if ($query->num_rows() > 0)
+		$arr_c_id= array();
+		foreach ($query->result_array() as $value)
 		{
-			return FALSE;
+			$arr_c_id[]=$value['c_id'];
 		}
-		return TRUE;
+		return $arr_c_id;
 	}
 
 	public function product_selected($selected)

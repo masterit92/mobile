@@ -23,12 +23,8 @@ class Maker extends My_controller {
 		$m_id = intval($this->input->get('m_id'));
 		if ($m_id !== MAKER_DEFAULT)
 		{
-			$arr_pro = $this->model_maker->product_maker($m_id);
-			foreach ($arr_pro as $pro)
-			{
-				$arr_data = array('m_id' => MAKER_DEFAULT);
-				$this->model_product->update($arr_data, $pro['p_id']);
-			}
+			$arr_data = array('m_id' => MAKER_DEFAULT);
+			$this->model_product->update_maker($arr_data, $m_id);
 			$this->model_maker->delete($m_id);
 		}
 		else

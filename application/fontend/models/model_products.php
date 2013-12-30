@@ -26,7 +26,7 @@ class Model_products extends CI_Model {
 		$this->num_row = $num_row;
 	}
 
-	public function set_data()
+	protected function set_data()
 	{
 		if (count($this->arr_where) > 0)
 		{
@@ -72,13 +72,38 @@ class Model_products extends CI_Model {
 		return $query->result_array();
 	}
 
-	public function limit_product()
+	public function limit_product(&$min_max_price = NULL, $action = TRUE)
 	{
+		if ($action)
+		{
+			$min_max_price['min_price'] = $this->min_price();
+			$min_max_price['max_price'] = $this->max_price();
+		}
 		$this->set_data();
 		$this->db->where('status', 1);
 		$this->db->limit($this->num_row, $this->start);
 		$query = $this->db->get($this->table_name);
 		return $query->result_array();
+	}
+
+	protected function min_price()
+	{
+		$this->set_data();
+		$this->db->where('status', 1);
+		$this->db->select_min('price');
+		$query = $this->db->get($this->table_name);
+		$price_min = $query->result_array();
+		return $price_min[0]['price'];
+	}
+
+	protected function max_price()
+	{
+		$this->set_data();
+		$this->db->where('status', 1);
+		$this->db->select_max('price');
+		$query = $this->db->get($this->table_name);
+		$price_min = $query->result_array();
+		return $price_min[0]['price'];
 	}
 
 	public function product_category($arr_c_id)
@@ -161,4 +186,5 @@ class Model_products extends CI_Model {
 		$this->arr_where = $arr_where;
 		$this->arr_where_in = $arr_where_in;
 	}
+
 }

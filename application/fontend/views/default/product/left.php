@@ -15,9 +15,9 @@ $arr_m_id = rtrim($arr_m_id, ',');
 	$(function () {
 		$("#slider-range").slider({
 			range: true,
-			min: 0,
-			max: 500,
-			values: [<?php echo (isset($filter_by['price_min'])) ? $filter_by['price_min'] : 0?>, <?php echo (isset($filter_by['price_max'])) ? $filter_by['price_max'] : 500?>],
+			min: <?php echo $data['min_max_price']['min_price']?>,
+			max: <?php echo $data['min_max_price']['max_price']?>,
+			values: [<?php echo (isset($filter_by['price_min'])) ? $filter_by['price_min'] :  $data['min_max_price']['min_price']?>, <?php echo (isset($filter_by['price_max'])) ? $filter_by['price_max'] :  $data['min_max_price']['max_price']?>],
 			slide: function (event, ui) {
 				$("#amount").val("$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ]);
 			}

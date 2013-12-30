@@ -5,11 +5,7 @@ if (isset($data['product']))
 }
 if (isset($data['product_category']))
 {
-	$product_category = array();
-	foreach ($data['product_category'] as $value)
-	{
-		$product_category[] = $value['c_id'];
-	}
+	$product_category = $data['product_category'];
 	$_GET['product_category'] = $product_category;
 }
 ?>
@@ -32,7 +28,7 @@ if (isset($data['product_category']))
 				</li>
 				<?php if (isset($product)): ?>
 					<li>
-						<label for="Product name" >&nbsp;<span>*</span></label>
+						<label for="Product name">&nbsp;<span>*</span></label>
 						<img src="<?php echo base_url($product['thumb']) ?>" width="100" height="100"/><br/>
 					</li>
 				<?php endif; ?>
