@@ -116,7 +116,7 @@ if (isset($data['product_category']))
 		</fieldset>
 		<fieldset id="submitform">
 			<input type="submit" id="formsubmit" name="save"
-				   value="<?php echo (isset($product)) ? 'Edit Category' : 'Create Category' ?>"/>
+				   value="<?php echo (isset($product)) ? 'Edit Product' : 'Create Product' ?>"/>
 			<input type="button" name="back" value="Back" class="event_back"/>
 		</fieldset>
 	</form>

@@ -117,7 +117,7 @@ class Users extends My_controller {
 				}
 				else
 				{
-					if ($this->model_users->check_email($email)&& !empty($password) && strcmp($password, $re_password) == 0)
+					if ($this->model_users->check_email($email) && !empty($password) && strcmp($password, $re_password) == 0)
 					{
 						$arr_data = array('email' => $email, 'password' => $password, 'full_name' => $full_name);
 						$this->model_users->insert($arr_data);

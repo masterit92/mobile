@@ -49,6 +49,7 @@ class Model_product extends CI_Model {
 		$this->db->where('m_id', $m_id);
 		$this->db->update($this->table_name, $arr_data);
 	}
+
 	public function delete($p_id)
 	{
 		$this->delete_product_category($p_id);
@@ -73,10 +74,10 @@ class Model_product extends CI_Model {
 	{
 		$this->db->where('p_id', $p_id);
 		$query = $this->db->get('cat_and_pro');
-		$arr_c_id= array();
+		$arr_c_id = array();
 		foreach ($query->result_array() as $value)
 		{
-			$arr_c_id[]=$value['c_id'];
+			$arr_c_id[] = $value['c_id'];
 		}
 		return $arr_c_id;
 	}

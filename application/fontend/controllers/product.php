@@ -179,7 +179,7 @@ class Product extends My_controller {
 			$list_product = $this->model_products->limit_product($min_max_price);
 			$this->response['data']['list_product'] = $list_product;
 			$this->response['data']['min_max_price'] = $min_max_price;
-			$this->filter_by['min_max_price']= $min_max_price;
+			$this->filter_by['min_max_price'] = $min_max_price;
 			$this->session->set_userdata('filter_by', $this->filter_by);
 			$this->response['data']['num_page'] = ceil($this->model_products->get_num_page() / $this->model_products->num_row);
 			$this->response['title'] = 'Product';

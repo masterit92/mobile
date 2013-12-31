@@ -110,7 +110,7 @@ class Product extends My_controller {
 					{
 						$product = $this->model_product->product_by_id($p_id);
 						$arr_data['thumb'] = $product[0]['thumb'];
-						if (! empty($_FILES['thumb']['name']))
+						if (!empty($_FILES['thumb']['name']))
 						{
 							$arr_data['thumb'] = $thumb;
 							unlink($product[0]['thumb']);
@@ -127,7 +127,7 @@ class Product extends My_controller {
 					}
 					foreach ($arr_c_id as $c_id)
 					{
-						if (!in_array($c_id,$arr_p_c))
+						if (!in_array($c_id, $arr_p_c))
 						{
 							$data_c_p = array('p_id' => $p_id, 'c_id' => $c_id);
 							$this->model_product->insert_product_category($data_c_p);
