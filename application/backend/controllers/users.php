@@ -28,13 +28,15 @@ class Users extends My_controller {
 				if ($status === 1)
 				{
 					$status = 0;
-				} else
+				}
+				else
 				{
 					$status = 1;
 				}
 				$arr_data = array('status' => $status);
 				$this->model_users->update($arr_data, $user_id);
-			} else
+			}
+			else
 			{
 				$this->session->set_flashdata('error', 'You can not set active yourself!');
 			}
@@ -50,7 +52,8 @@ class Users extends My_controller {
 			if ($user_id != $this->session->userdata('user_infor')->user_id)
 			{
 				$this->model_users->delete($user_id);
-			} else
+			}
+			else
 			{
 				$this->session->set_flashdata('error', 'You can not delete yourself!');
 			}
@@ -86,38 +89,48 @@ class Users extends My_controller {
 		if ($this->input->post('save'))
 		{
 			$email = $this->input->post('email');
-			$full_name = $this->input->post('full_name');
-			$password = $this->input->post('password');
-			$re_password = $this->input->post('re_password');
-			if ($this->input->post('user_id'))
+			if (filter_var($email, FILTER_VALIDATE_EMAIL))
 			{
-				$user_id = intval($this->input->post('user_id'));
-				if ($this->input->post('full_name'))
+				$full_name = $this->input->post('full_name');
+				$password = $this->input->post('password');
+				$re_password = $this->input->post('re_password');
+				if ($this->input->post('user_id'))
 				{
-					$arr_data = array('full_name' => $full_name);
-					$this->model_users->update($arr_data, $user_id);
-				}
-				if ($this->input->post('password') && $this->input->post('re_password'))
-				{
-					if (!empty($password) && strcmp($password, $re_password) === 0)
+					$user_id = intval($this->input->post('user_id'));
+					if ($this->input->post('full_name'))
 					{
-						$arr_data = array('password' => $password);
+						$arr_data = array('full_name' => $full_name);
 						$this->model_users->update($arr_data, $user_id);
-					} else
+					}
+					if ($this->input->post('password') && $this->input->post('re_password'))
+					{
+						if (!empty($password) && strcmp($password, $re_password) === 0)
+						{
+							$arr_data = array('password' => $password);
+							$this->model_users->update($arr_data, $user_id);
+						}
+						else
+						{
+							$this->session->set_flashdata('error', 'Form error!');
+						}
+					}
+				}
+				else
+				{
+					if ($this->model_users->check_email($email)&& !empty($password) && strcmp($password, $re_password) == 0)
+					{
+						$arr_data = array('email' => $email, 'password' => $password, 'full_name' => $full_name);
+						$this->model_users->insert($arr_data);
+					}
+					else
 					{
 						$this->session->set_flashdata('error', 'Form error!');
 					}
 				}
-			} else
+			}
+			else
 			{
-				if ($this->model_users->check_email($email) && empty($email) && !empty($password) && strcmp($password, $re_password) == 0)
-				{
-					$arr_data = array('email' => $email, 'password' => $password, 'full_name' => $full_name);
-					$this->model_users->insert($arr_data);
-				} else
-				{
-					$this->session->set_flashdata('error', 'Form error!');
-				}
+				$this->session->set_flashdata('error', 'Email error!');
 			}
 			redirect('admin/users');
 		}
