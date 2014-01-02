@@ -89,33 +89,34 @@ class Users extends My_controller {
 		if ($this->input->post('save'))
 		{
 			$email = $this->input->post('email');
-			if (filter_var($email, FILTER_VALIDATE_EMAIL))
+
+			$full_name = $this->input->post('full_name');
+			$password = $this->input->post('password');
+			$re_password = $this->input->post('re_password');
+			if ($this->input->post('user_id'))
 			{
-				$full_name = $this->input->post('full_name');
-				$password = $this->input->post('password');
-				$re_password = $this->input->post('re_password');
-				if ($this->input->post('user_id'))
+				$user_id = intval($this->input->post('user_id'));
+				if ($this->input->post('full_name'))
 				{
-					$user_id = intval($this->input->post('user_id'));
-					if ($this->input->post('full_name'))
+					$arr_data = array('full_name' => $full_name);
+					$this->model_users->update($arr_data, $user_id);
+				}
+				if ($this->input->post('password') && $this->input->post('re_password'))
+				{
+					if (!empty($password) && strcmp($password, $re_password) === 0)
 					{
-						$arr_data = array('full_name' => $full_name);
+						$arr_data = array('password' => $password);
 						$this->model_users->update($arr_data, $user_id);
 					}
-					if ($this->input->post('password') && $this->input->post('re_password'))
+					else
 					{
-						if (!empty($password) && strcmp($password, $re_password) === 0)
-						{
-							$arr_data = array('password' => $password);
-							$this->model_users->update($arr_data, $user_id);
-						}
-						else
-						{
-							$this->session->set_flashdata('error', 'Form error!');
-						}
+						$this->session->set_flashdata('error', 'Form error!');
 					}
 				}
-				else
+			}
+			else
+			{
+				if (filter_var($email, FILTER_VALIDATE_EMAIL))
 				{
 					if ($this->model_users->check_email($email) && !empty($password) && strcmp($password, $re_password) == 0)
 					{
@@ -127,11 +128,12 @@ class Users extends My_controller {
 						$this->session->set_flashdata('error', 'Form error!');
 					}
 				}
+				else
+				{
+					$this->session->set_flashdata('error', 'Email error!');
+				}
 			}
-			else
-			{
-				$this->session->set_flashdata('error', 'Email error!');
-			}
+
 			redirect('admin/users');
 		}
 	}

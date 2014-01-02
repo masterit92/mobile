@@ -24,6 +24,7 @@ class Product extends My_controller {
 		$this->response['title'] = "Product";
 		if ($this->input->post('page'))
 		{
+			$this->response['data']['page'] =$this->input->post('page');
 			$this->load->view("default/product/index", $this->response);
 		}
 		else

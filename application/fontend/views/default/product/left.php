@@ -66,7 +66,7 @@ $arr_m_id = rtrim($arr_m_id, ',');
 		<div class="left_content">
 			<p>
 				<label for="amount"><b>Price range:</b></label>
-				<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
+				<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;width: 100px">
 			</p>
 
 			<div id="slider-range"></div>

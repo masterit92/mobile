@@ -58,14 +58,14 @@
 			<a href="#?page=1" class="<?php echo $class_name ?>" id="0">Start</a>
 			<?php
 			$current = 1;
-			if (isset($_GET['page']))
+			if (isset($data['page']))
 			{
-				$current = $_GET['page'];
+				$current = $data['page'];
 			}
 			$flag = TRUE;
 			for ($i = 1; $i <= $num_page; $i++)
 			{
-				if ($i > ($current - 3) && $i < ($current + 3))
+				if ($i > ($current - 2) && $i < ($current + 2))
 				{
 					$flag = TRUE;
 					echo ' <a href="' . $url . '?page=' . $i . '" class="' . $class_name . '" id="' . ($i - 1) . '">' . $i . '</a>';
