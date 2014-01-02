@@ -36,7 +36,9 @@
 					echo '--<a href="#" class="event_del_filter" filter="arr_m_id">Delete</a><br/>';
 				}
 			endforeach;
-			echo "<a href='" . base_url('product') . "'>Clear Filter</a>";
+			if (isset($filter['c_id'])):
+				echo "<a href='#' class='event_del_filter' filter='clear_filter'>Clear Filter</a>";
+			endif;
 		endif;
 		?>
 		<p>

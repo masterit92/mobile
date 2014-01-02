@@ -91,13 +91,13 @@ class Product extends My_controller {
 			$name = $this->input->post('product_name');
 			$price = floatval($this->input->post('price'));
 			$description = $this->input->post('description');
-			$quantity = $this->input->post('quantity');
+			$quantity = intval($this->input->post('quantity'));
 			$thumb = $this->upload_img('thumb');
 			$arr_c_id = $this->input->post('cat_id');
 			$m_id = $this->input->post('m_id');
 			$selected = $this->input->post('selected');
 			$arr_data = array('name' => $name, 'price' => $price, 'description' => $description, 'quantity' => $quantity, 'm_id' => $m_id, 'selected' => $selected);
-			if (!empty($name) && intval($quantity))
+			if (!empty($name) && $quantity >= 0)
 			{
 				if ($thumb !== NULL)
 				{

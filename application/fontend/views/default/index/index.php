@@ -14,11 +14,11 @@
 
 						<div class="slide-cnt">
 							<h2><?php echo html_escape($product['name']) ?></h2>
-								<?php
-								echo substr($product['description'], 0, 100);
-								?>....<a
-									href="<?php echo base_url('product/detail?p_id=' . $product['p_id']) ?>">Read
-									More</a>
+							<?php
+							echo substr($product['description'], 0, 100);
+							?>....<a
+								href="<?php echo base_url('product/detail?p_id=' . $product['p_id']) ?>">Read
+								More</a>
 							<a href="<?php echo base_url('product/detail?p_id=' . $product['p_id']) ?>"
 							   class="slider-btn">Detail</a>
 						</div>

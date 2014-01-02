@@ -24,8 +24,6 @@ $arr_m_id = rtrim($arr_m_id, ',');
 		});
 		$("#amount").val("$" + $("#slider-range").slider("values", 0) +
 			" - $" + $("#slider-range").slider("values", 1));
-
-
 	});
 </script>
 <script src="<?php echo base_url('public/fontend/js/my_js.js'); ?>" type="text/javascript"></script>

@@ -1,7 +1,7 @@
 <!-- header -->
 <header>
 	<div class="shell">
-		<h1 id="logo"><a href="<?php echo base_url('index')?>">Core</a></h1>
+		<h1 id="logo"><a href="<?php echo base_url('index') ?>">Core</a></h1>
 
 		<form action="<?php echo base_url('product/search') ?>" method="post">
 			<div class="contact">

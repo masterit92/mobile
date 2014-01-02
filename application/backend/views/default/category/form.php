@@ -46,7 +46,7 @@ if (isset($data['category']))
 									}
 									echo '>';
 									echo $text . $cat['name'] . '</option>';
-									show_select($arr_cat,$parent_c, $cat['c_id'], $text . '&triangleright;&triangleright;&triangleright;');
+									show_select($arr_cat, $parent_c, $cat['c_id'], $text . '&triangleright;&triangleright;&triangleright;');
 								endif;
 							}
 						}

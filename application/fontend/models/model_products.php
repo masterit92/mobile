@@ -72,7 +72,7 @@ class Model_products extends CI_Model {
 		return $query->result_array();
 	}
 
-	public function limit_product(&$min_max_price = NULL, $action = TRUE)
+	protected function limit_product(&$min_max_price = NULL, $action = TRUE)
 	{
 		if ($action)
 		{
@@ -187,4 +187,46 @@ class Model_products extends CI_Model {
 		$this->arr_where_in = $arr_where_in;
 	}
 
+	public function product_slide_show()
+	{
+		$this->set_infor(0, SLIDE_SHOW);
+		$this->arr_where = array('selected <>' => 0);
+		$this->arr_order_by = array('selected' => 'ASC');
+		return $this->limit_product();
+	}
+
+	public function product_new()
+	{
+		$this->set_infor(0, 4);
+		return $this->limit_product();
+	}
+
+	public function product_relate($price, $p_id)
+	{
+		$price_min = $price - 20;
+		$price_max = $price + 20;
+		$this->arr_where = array('price >= ' => $price_min, 'price <= ' => $price_max, 'p_id <>' => $p_id);
+		$this->set_infor(0, 4);
+		return $this->limit_product();
+	}
+
+	public function filter_product($filter_by, $page, $num_row, &$min_max_price = NULL, $action = TRUE)
+	{
+		$start = $this->num_row * $page;
+		$this->set_infor($start, $num_row);
+		$this->filter_by($filter_by);
+		return $this->limit_product($min_max_price, $action);
+	}
+
+	public function all_product(&$min_max_price)
+	{
+		return $this->limit_product($min_max_price);
+	}
+
+	public function get_product_category($arr_pro_id, &$min_max_price = NULL)
+	{
+		$arr_where_in = array('p_id' => $arr_pro_id);
+		$this->arr_where_in = $arr_where_in;
+		return $this->limit_product($min_max_price);
+	}
 }
