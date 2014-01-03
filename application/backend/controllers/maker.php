@@ -15,7 +15,7 @@ class Maker extends My_controller {
 		$this->response['data']['list_maker'] = $arr_maker;
 		$this->response['title'] = 'Maker';
 		$this->response['template'] = 'default/maker/index';
-		$this->load->view("default/layout", $this->response);
+		$this->load->view('default/layout', $this->response);
 	}
 
 	public function delete()
@@ -43,7 +43,7 @@ class Maker extends My_controller {
 			$this->response['data']['maker'] = $maker;
 			$this->response['title'] = 'Maker';
 			$this->response['template'] = 'default/maker/form';
-			$this->load->view("default/layout", $this->response);
+			$this->load->view('default/layout', $this->response);
 		}
 		else
 		{
@@ -56,7 +56,7 @@ class Maker extends My_controller {
 	{
 		$this->response['title'] = 'Maker';
 		$this->response['template'] = 'default/maker/form';
-		$this->load->view("default/layout", $this->response);
+		$this->load->view('default/layout', $this->response);
 	}
 
 	public function save()

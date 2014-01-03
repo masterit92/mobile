@@ -29,13 +29,13 @@ class Index extends CI_Controller {
 		}
 		if (!$flag)
 		{
-			$this->load->view("default/index/login");
+			$this->load->view('default/index/login');
 		}
 		else
 		{
-			$response['title'] = "Home";
+			$response['title'] = 'Home';
 			$response['template'] = 'default/index/home';
-			$this->load->view("default/layout", $response);
+			$this->load->view('default/layout', $response);
 		}
 	}
 
@@ -44,7 +44,7 @@ class Index extends CI_Controller {
 		$this->session->unset_userdata('user_infor');
 		$this->session->unset_userdata('role_user');
 		$this->session->sess_destroy();
-		redirect("admin/index");
+		redirect('admin/index');
 	}
 
 }

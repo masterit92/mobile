@@ -27,9 +27,9 @@ class Product extends My_controller {
 		$this->filter_by['min_max_price'] = $min_max_price;
 		$this->session->set_userdata('filter_by', $this->filter_by);
 		$this->response['data']['num_page'] = ceil($this->model_products->get_num_page() / $this->model_products->num_row);
-		$this->response['title'] = "Product";
+		$this->response['title'] = 'Product';
 		$this->response['template'] = 'default/product/index';
-		$this->load->view("default/layout", $this->response);
+		$this->load->view('default/layout', $this->response);
 	}
 
 	public function detail()
@@ -38,7 +38,7 @@ class Product extends My_controller {
 		$product = $this->model_products->product_by_id($p_id);
 		$this->response['data']['arr_relate'] = $this->model_products->product_relate($product[0]['price'], $p_id);
 		$this->response['data']['product'] = $product;
-		$this->response['title'] = "Product";
+		$this->response['title'] = 'Product';
 		$this->response['template'] = 'default/product/detail';
 		$this->load->view('default/layout', $this->response);
 	}
@@ -70,9 +70,9 @@ class Product extends My_controller {
 		}
 		$this->session->set_userdata('filter_by', $this->filter_by);
 		$this->response['data']['makers'] = $this->maker_category($arr_c_id);
-		$this->response['title'] = "Product";
+		$this->response['title'] = 'Product';
 		$this->response['template'] = 'default/product/index';
-		$this->load->view("default/layout", $this->response);
+		$this->load->view('default/layout', $this->response);
 	}
 
 	public function filter()
@@ -108,8 +108,8 @@ class Product extends My_controller {
 		$this->response['data']['min_max_price'] = $min_max_price;
 		$this->response['data']['num_page'] = ceil($this->model_products->get_num_page() / $this->model_products->num_row);
 		$this->response['data']['page'] = $page + 1;
-		$this->response['title'] = "Product";
-		$this->load->view("default/product/index", $this->response);
+		$this->response['title'] = 'Product';
+		$this->load->view('default/product/index', $this->response);
 	}
 
 	protected function price_rang()

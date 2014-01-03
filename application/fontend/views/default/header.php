@@ -3,18 +3,12 @@
 	<div class="shell">
 		<h1 id="logo"><a href="<?php echo base_url('index') ?>">Core</a></h1>
 
-		<form action="<?php echo base_url('product/search') ?>" method="post">
-			<div class="contact">
-				<p>
-					<input type="text" name="txt_search" placeholder="Search...."/>
-					<input type="submit" name="btn_search" value="Search" class="button"/>
-				</p>
+		<div class="contact">
 
-				<p class="ico phone-ico"><span></span>+132 456 789</p>
+			<p class="ico phone-ico"><span></span>+132 456 789</p>
 
-				<p class="ico mail-ico"><span></span><a href="#">sales@core.com</a></p>
-			</div>
-		</form>
+			<p class="ico mail-ico"><span></span><a href="#">sales@core.com</a></p>
+		</div>
 	</div>
 </header>
 <!-- end of header -->

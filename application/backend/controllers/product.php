@@ -25,12 +25,12 @@ class Product extends My_controller {
 		if ($this->input->post('page'))
 		{
 			$this->response['data']['page'] = $this->input->post('page');
-			$this->load->view("default/product/index", $this->response);
+			$this->load->view('default/product/index', $this->response);
 		}
 		else
 		{
 			$this->response['template'] = 'default/product/index';
-			$this->load->view("default/layout", $this->response);
+			$this->load->view('default/layout', $this->response);
 		}
 	}
 
@@ -68,9 +68,9 @@ class Product extends My_controller {
 	{
 		$arr_cat = $this->model_category->all_category();
 		$this->response['data']['list_category'] = $arr_cat;
-		$this->response['title'] = "Create Product";
+		$this->response['title'] = 'Create Product';
 		$this->response['template'] = 'default/product/form';
-		$this->load->view("default/layout", $this->response);
+		$this->load->view('default/layout', $this->response);
 	}
 
 	public function edit()
@@ -80,9 +80,9 @@ class Product extends My_controller {
 		$p_id = intval($this->input->get('p_id'));
 		$this->response['data']['product'] = $this->model_product->product_by_id($p_id);
 		$this->response['data']['product_category'] = $this->model_product->product_category($p_id);
-		$this->response['title'] = "Edit Product";
+		$this->response['title'] = 'Edit Product';
 		$this->response['template'] = 'default/product/form';
-		$this->load->view("default/layout", $this->response);
+		$this->load->view('default/layout', $this->response);
 	}
 
 	public function save()

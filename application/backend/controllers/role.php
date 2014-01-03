@@ -14,7 +14,7 @@ class Role extends My_controller {
 		$this->response['data']['list_role'] = $this->model_role->all_role();
 		$this->response['title'] = 'Role';
 		$this->response['template'] = 'default/role/index';
-		$this->load->view("default/layout", $this->response);
+		$this->load->view('default/layout', $this->response);
 	}
 
 	public function set_status()

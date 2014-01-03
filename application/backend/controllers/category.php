@@ -14,7 +14,7 @@ class Category extends My_controller {
 		$this->response['data']['list_category'] = $arr_cat;
 		$this->response['title'] = 'Category';
 		$this->response['template'] = 'default/category/index';
-		$this->load->view("default/layout", $this->response);
+		$this->load->view('default/layout', $this->response);
 	}
 
 	public function set_status()
@@ -55,7 +55,7 @@ class Category extends My_controller {
 		$this->response['data']['list_category'] = $arr_cat;
 		$this->response['title'] = 'Edit Category';
 		$this->response['template'] = 'default/category/form';
-		$this->load->view("default/layout", $this->response);
+		$this->load->view('default/layout', $this->response);
 	}
 
 	public function create()
@@ -64,7 +64,7 @@ class Category extends My_controller {
 		$this->response['data']['list_category'] = $arr_cat;
 		$this->response['title'] = 'Create Category';
 		$this->response['template'] = 'default/category/form';
-		$this->load->view("default/layout", $this->response);
+		$this->load->view('default/layout', $this->response);
 	}
 
 	public function save()

@@ -14,7 +14,7 @@ class Users extends My_controller {
 		$this->response['data']['list_user'] = $this->model_users->all_user();
 		$this->response['title'] = 'Users';
 		$this->response['template'] = 'default/users/index';
-		$this->load->view("default/layout", $this->response);
+		$this->load->view('default/layout', $this->response);
 	}
 
 	public function set_status()
@@ -65,7 +65,7 @@ class Users extends My_controller {
 	{
 		$this->response['title'] = 'Create Users';
 		$this->response['template'] = 'default/users/form_create';
-		$this->load->view("default/layout", $this->response);
+		$this->load->view('default/layout', $this->response);
 	}
 
 	public function profile()
