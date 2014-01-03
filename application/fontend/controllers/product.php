@@ -52,6 +52,7 @@ class Product extends My_controller {
 		$arr_c_id[] = $this->input->get('c_id');
 		$this->filter_by['c_id'] = $c_id;
 		$this->filter_by['arr_c_id'] = $arr_c_id;
+		$this->session->set_userdata('data_c_id', $arr_c_id);
 		$this->session->set_userdata('filter_by', $this->filter_by);
 
 		$arr_pro_id = $this->model_products->product_in_category($arr_c_id);
@@ -96,6 +97,14 @@ class Product extends My_controller {
 		{
 			$min_max_price = $this->filter_by['min_max_price'];
 		}
+		if ($this->session->userdata('data_c_id') && isset($this->filter_by['price_min']))
+		{
+			$this->response['data']['makers'] = $this->maker_category($this->session->userdata('data_c_id'), $this->filter_by['price_min'], $this->filter_by['price_max']);
+		}
+		else if (isset($this->filter_by['c_id']))
+		{
+			$this->response['data']['makers'] = $this->maker_category($this->filter_by['arr_c_id']);
+		}
 		$this->response['data']['min_max_price'] = $min_max_price;
 		$this->response['data']['num_page'] = ceil($this->model_products->get_num_page() / $this->model_products->num_row);
 		$this->response['data']['page'] = $page + 1;
@@ -112,6 +121,7 @@ class Product extends My_controller {
 			$max = ltrim($range[1], '$');
 			$this->filter_by['price_min'] = $min;
 			$this->filter_by['price_max'] = $max;
+			$this->response['data']['makers'] = $this->maker_category($this->session->userdata('data_c_id'), $min, $max);
 			$this->session->set_userdata('filter_by', $this->filter_by);
 		}
 	}
@@ -130,10 +140,14 @@ class Product extends My_controller {
 				$this->filter_by['arr_m_id'] = NULL;
 			}
 			$this->session->set_userdata('filter_by', $this->filter_by);
-		}
-		if (isset($this->filter_by['c_id']))
-		{
-			$this->response['data']['makers'] = $this->maker_category($this->filter_by['arr_c_id']);
+			if ($this->session->userdata('data_c_id') && isset($this->filter_by['price_min']))
+			{
+				$this->response['data']['makers'] = $this->maker_category($this->session->userdata('data_c_id'), $this->filter_by['price_min'], $this->filter_by['price_max']);
+			}
+			else if (isset($this->filter_by['c_id']))
+			{
+				$this->response['data']['makers'] = $this->maker_category($this->filter_by['arr_c_id']);
+			}
 		}
 	}
 
@@ -152,33 +166,6 @@ class Product extends My_controller {
 			$this->filter_by['sort_price'] = $sort_price;
 			unset($this->filter_by['sort_name']);
 			$this->session->set_userdata('filter_by', $this->filter_by);
-		}
-	}
-
-	public function search()
-	{
-		if ($this->input->post('btn_search'))
-		{
-			$this->filter_by = NULL;
-			$name = $this->input->post('txt_search');
-			$this->filter_by['search'] = $name;
-
-			$arr_like = array('name' => $name);
-			$this->model_products->arr_like = $arr_like;
-			$min_max_price = array();
-			$list_product = $this->model_products->limit_product($min_max_price);
-			$this->response['data']['list_product'] = $list_product;
-			$this->response['data']['min_max_price'] = $min_max_price;
-			$this->filter_by['min_max_price'] = $min_max_price;
-			$this->session->set_userdata('filter_by', $this->filter_by);
-			$this->response['data']['num_page'] = ceil($this->model_products->get_num_page() / $this->model_products->num_row);
-			$this->response['title'] = 'Product';
-			$this->response['template'] = 'default/product/index';
-			$this->load->view('default/layout', $this->response);
-		}
-		else
-		{
-			redirect('product');
 		}
 	}
 
@@ -211,9 +198,9 @@ class Product extends My_controller {
 		}
 	}
 
-	public function maker_category($arr_c_id)
+	protected function maker_category($arr_c_id, $price_min = NULL, $price_max = NULL)
 	{
-		$arr_maker_cat = $this->model_products->maker_product($arr_c_id);
+		$arr_maker_cat = $this->model_products->maker_product($arr_c_id, $price_min, $price_max);
 		return $this->model_maker->maker_by_id($arr_maker_cat);
 	}
 }

@@ -118,9 +118,12 @@ class Model_products extends CI_Model {
 		return $arr_pro_id;
 	}
 
-	public function maker_product($arr_c_id)
+	public function maker_product($arr_c_id, $price_min = NULL, $price_max = NULL)
 	{
-		$arr_product = $this->product_category($arr_c_id);
+		if (count($arr_c_id) > 0)
+		{
+			$arr_product = $this->product_category($arr_c_id);
+		}
 		if (count($arr_product) > 0)
 		{
 			$arr = implode(',', $arr_product);
@@ -128,7 +131,16 @@ class Model_products extends CI_Model {
 			$sql = "SELECT DISTINCT `m_id` FROM `product`
 						JOIN `cat_and_pro` ON `product`.`p_id`= `cat_and_pro`.`p_id`
 						JOIN `category` ON `cat_and_pro`.`c_id`=`category`.`c_id`
-						WHERE `product`.`p_id` IN($arr) AND `category`.`c_id` IN($arr_c_id)";
+						WHERE `product`.`p_id` IN($arr) ";
+			if (count($arr_c_id) > 0)
+			{
+				$sql .= " AND `category`.`c_id` IN($arr_c_id) ";
+			}
+			if ($price_min !== NULL && $price_max !== NULL)
+			{
+				$sql .= " AND `product`.`price` >= $price_min AND `product`.`price` <= $price_max";
+			}
+
 			$query = $this->db->query($sql);
 			$arr_maker_id = array();
 			foreach ($query->result_array() as $pro)
