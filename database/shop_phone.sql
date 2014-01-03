@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2014 at 07:40 AM
+-- Generation Time: Jan 03, 2014 at 07:58 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   PRIMARY KEY (`c_id`),
   KEY `status` (`status`),
   KEY `parent_id` (`parent_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `category`
@@ -146,10 +146,6 @@ INSERT INTO `cat_and_pro` (`p_id`, `c_id`) VALUES
 (18, 10),
 (18, 12),
 (18, 13),
-(19, 2),
-(19, 5),
-(19, 8),
-(19, 12),
 (20, 1),
 (20, 2),
 (20, 4),
@@ -226,7 +222,7 @@ CREATE TABLE IF NOT EXISTS `maker` (
   `m_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`m_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `maker`
@@ -259,7 +255,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   KEY `price` (`price`),
   KEY `status` (`status`),
   KEY `selected` (`selected`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=36 ;
 
 --
 -- Dumping data for table `product`
@@ -342,6 +338,8 @@ CREATE TABLE IF NOT EXISTS `role_and_user` (
 INSERT INTO `role_and_user` (`user_id`, `role_id`) VALUES
 (1, 4),
 (1, 5),
+(1, 6),
+(8, 8),
 (8, 9),
 (9, 1);
 
@@ -359,7 +357,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `status` smallint(6) NOT NULL DEFAULT '1',
   PRIMARY KEY (`user_id`),
   KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `user`
@@ -370,7 +368,8 @@ INSERT INTO `user` (`user_id`, `email`, `password`, `full_name`, `status`) VALUE
 (8, '<b>binhpt</b>', '123456', '<b>Phan The Binh</b>', 1),
 (9, 'aaa@hhh.com', '123456', 'aaa', 1),
 (10, 'fff@gmail.com', '12345', 'Binh', 1),
-(11, 'fffh@gmail.com', '12345678', 'Phan The Binh', 1);
+(11, 'fffh@gmail.com', '12345678', 'Phan The Binh', 1),
+(12, 'admin@gmail.com', 'sa', 'de', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
